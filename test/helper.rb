@@ -19,6 +19,8 @@ class Test::Unit::TestCase
 
     ActionView::Base.send :include, Attrtastic::SemanticAttributesHelper
     @template = ActionView::Base.new.tap{ |av| av.output_buffer = "" }
+    @user_builder = Attrtastic::SemanticAttributesBuilder.new(@user, @template)
+    @blog_builder = Attrtastic::SemanticAttributesBuilder.new(@blog, @template)
   end
 end
 

@@ -2,10 +2,10 @@ module Attrtastic
 
   class SemanticAttributesBuilder
 
-    @@label_str_method = :humanize
-    @@value_methods = %w/ to_label display_name fill_name name title username login value to_s /
+    @@value_methods = %w/ to_label display_name full_name name title username login value to_s /
 
     attr_reader :record, :template
+    cattr_reader :label_str_method
 
     def initialize(record, template)
       @record, @template = record, template
@@ -17,7 +17,26 @@ module Attrtastic
       template.concat("</ol>")
     end
 
-    def attribute
+    def attribute(method)
+      label_class = ["label"]
+      value_class = ["value"]
+      content = [
+        template.content_tag(:span, label_for_attribute(method), {:class => label_class.join(" ")}),
+        template.content_tag(:span, value_of_attribute(method),  {:class => value_class.join(" ")})
+      ].join
+      template.content_tag(:li, content)
+    end
+
+    def label_for_attribute(method)
+      if record.class.respond_to?(:human_attribute_name)
+        record.class.human_attribute_name(method.to_s)
+      else
+        method.to_s.send(:humanize)
+      end
+    end
+
+    def value_of_attribute(method)
+      record.send(method).to_s
     end
 
   end
