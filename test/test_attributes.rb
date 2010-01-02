@@ -39,4 +39,18 @@ class TestAttributes < Test::Unit::TestCase
     assert_equal expected, actual
   end
 
+  def test__attributes__with_header
+    expected = html <<-EOHTML
+      <div class="attributes">
+        <div class="legend">Legend</div>
+        <ol>
+        </ol>
+      </div>
+    EOHTML
+
+    @user_builder.attributes "Legend" do end
+    actual = @template.output_buffer.to_s
+    assert_equal expected, actual
+  end
+
 end

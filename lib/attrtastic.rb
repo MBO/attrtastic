@@ -10,12 +10,19 @@ module Attrtastic
       @record, @template = record, template
     end
 
-    def attributes(&block)
+    def attributes(*args, &block)
       if block_given?
         template.concat(template.tag(:div, {:class => "attributes"}, true))
+
+        if args.first
+          header = args.first
+          template.concat(template.content_tag(:div, header, {:class => "legend"}))
+        end
+
         template.concat(template.tag(:ol, {}, true))
         yield
         template.concat("</ol>")
+
         template.concat("</div>")
       end
     end

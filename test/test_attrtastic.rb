@@ -10,6 +10,7 @@ class TestAttrtastic < Test::Unit::TestCase
     expected = html <<-EOHTML
       <div class="attrtastic user">
         <div class="attributes">
+          <div class="legend">User</div>
           <ol>
             <li>
               <span class="label">First name</span>
@@ -23,6 +24,7 @@ class TestAttrtastic < Test::Unit::TestCase
         </div>
 
         <div class="attributes">
+          <div class="legend">Contact</div>
           <ol>
             <li>
               <span class="label">Email</span>
@@ -34,11 +36,11 @@ class TestAttrtastic < Test::Unit::TestCase
     EOHTML
 
     @template.semantic_attributes_for(@user) do |attr|
-      attr.attributes do
+      attr.attributes "User" do
         @template.output_buffer << (attr.attribute :first_name)
         @template.output_buffer << (attr.attribute :last_name)
       end
-      attr.attributes do
+      attr.attributes "Contact" do
         @template.output_buffer << (attr.attribute :email)
       end
     end
