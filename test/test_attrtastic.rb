@@ -37,11 +37,12 @@ class TestAttrtastic < Test::Unit::TestCase
 
     @template.semantic_attributes_for(@user) do |attr|
       attr.attributes "User" do
-        @template.output_buffer << (attr.attribute :first_name)
-        @template.output_buffer << (attr.attribute :last_name)
+        @template.output_buffer << (attr.attribute :first_name).to_s
+        @template.output_buffer << (attr.attribute :last_name).to_s
+        @template.output_buffer << (attr.attribute :title).to_s
       end
       attr.attributes "Contact" do
-        @template.output_buffer << (attr.attribute :email)
+        @template.output_buffer << (attr.attribute :email).to_s
       end
     end
 

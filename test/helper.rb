@@ -28,7 +28,7 @@ class Test::Unit::TestCase
 end
 
 class User
-  attr_accessor :first_name, :last_name, :email
+  attr_accessor :first_name, :last_name, :email, :title
 
   def full_name
     [last_name,first_name].join(", ")

@@ -27,14 +27,20 @@ module Attrtastic
       end
     end
 
-    def attribute(method)
+    def attribute(method, options = {})
       label_class = ["label"]
       value_class = ["value"]
-      content = [
-        template.content_tag(:span, label_for_attribute(method), {:class => label_class.join(" ")}),
-        template.content_tag(:span, value_of_attribute(method),  {:class => value_class.join(" ")})
-      ].join
-      template.content_tag(:li, content)
+
+      label = label_for_attribute(method)
+      value = value_of_attribute(method)
+
+      if value.present? or options[:display_empty]
+        content = [
+          template.content_tag(:span, label, {:class => label_class.join(" ")}),
+          template.content_tag(:span, value,  {:class => value_class.join(" ")})
+        ].join
+        template.content_tag(:li, content)
+      end
     end
 
     def label_for_attribute(method)
