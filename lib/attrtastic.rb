@@ -18,18 +18,24 @@ module Attrtastic
       end
       options[:html] ||= {}
 
-      html_class = [ "attributes", options[:html][:class] ].compact.join(" ")
+      html_class = [ "attributes", options[:html].delete(:class) ].compact.join(" ")
+      html_header_class = [ "legend", options[:html].delete(:header_class) ].compact.join(" ")
+
       template.concat(template.tag(:div, {:class => html_class}, true))
 
-      if args.first
-        header = args.first
-        html_header_class = [ "legend", options[:html][:header_class] ].compact.join(" ")
+      if args.first and args.first.is_a? String
+        header = args.shift
         template.concat(template.content_tag(:div, header, :class => html_header_class))
       end
 
       if block_given?
         template.concat(template.tag(:ol, {}, true))
         yield
+        template.concat("</ol>")
+      elsif args.present?
+        template.concat(template.tag(:ol, {}, true))
+        attrs = args.map {|method| attribute(method, options)}.compact.join
+        template.concat(attrs)
         template.concat("</ol>")
       end
 

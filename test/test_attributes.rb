@@ -55,4 +55,51 @@ class TestAttributes < Test::Unit::TestCase
     assert_equal expected, actual
   end
 
+  def test__attributes__with_fields_list
+    expected = html <<-EOHTML
+      <div class="attributes">
+        <ol>
+          <li class="attribute">
+            <span class="label">Full name</span>
+            <span class="value">Doe, John</span>
+          </li>
+          <li class="attribute">
+            <span class="label">Email</span>
+            <span class="value">john@doe.com</span>
+          </li>
+        </ol>
+      </div>
+    EOHTML
+
+    @user_builder.attributes :full_name, :email
+    actual = @template.output_buffer.to_s
+    assert_equal expected, actual
+  end
+
+  def test__attributes__with_fields_list_header_and_options
+    expected = html <<-EOHTML
+      <div class="attributes contact">
+        <div class="legend">Contact</div>
+        <ol>
+          <li class="attribute">
+            <span class="label">Full name</span>
+            <span class="value">Doe, John</span>
+          </li>
+          <li class="attribute">
+            <span class="label">Title</span>
+            <span class="value"></span>
+          </li>
+          <li class="attribute">
+            <span class="label">Email</span>
+            <span class="value">john@doe.com</span>
+          </li>
+        </ol>
+      </div>
+    EOHTML
+
+    @user_builder.attributes "Contact", :full_name, :title, :email, :html => {:class => "contact"}, :display_empty => true
+    actual = @template.output_buffer.to_s
+    assert_equal expected, actual
+  end
+
 end
