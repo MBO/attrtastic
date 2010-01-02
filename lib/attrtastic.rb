@@ -49,12 +49,8 @@ module Attrtastic
       html_value_class = [ "value", options[:html][:value_class] ].compact.join(" ")
       html_class = [ "attribute", options[:html][:class] ].compact.join(" ")
 
-      if options[:label]
-        label = options[:label]
-      else
-        label = label_for_attribute(method)
-      end
-      value = value_of_attribute(method)
+      label = options[:label] || label_for_attribute(method)
+      value = options[:value] || value_of_attribute(method)
 
       if value.present? or options[:display_empty]
         content = [

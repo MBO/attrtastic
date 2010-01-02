@@ -45,4 +45,16 @@ class TestAttribute < Test::Unit::TestCase
     assert_equal expected, actual
   end
 
+  def test__attribute__with_custom_value
+    expected = html <<-EOHTML
+      <li class="attribute">
+        <span class="label">Full name</span>
+        <span class="value">Sir Doe, John</span>
+      </li>
+    EOHTML
+
+    actual = @user_builder.attribute(:full_name, :value => "Sir #{@user.full_name}")
+    assert_equal expected, actual
+  end
+
 end
