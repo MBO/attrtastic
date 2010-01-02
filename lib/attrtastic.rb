@@ -42,7 +42,7 @@ module Attrtastic
       template.concat("</div>")
     end
 
-    def attribute(method, options = {})
+    def attribute(method, options = {}, &block)
       options[:html] ||= {}
 
       html_label_class = [ "label", options[:html][:label_class] ].compact.join(" ")
@@ -50,13 +50,20 @@ module Attrtastic
       html_class = [ "attribute", options[:html][:class] ].compact.join(" ")
 
       label = options.key?(:label) ? options[:label] : label_for_attribute(method)
-      value = options.key?(:value) ? options[:value] : value_of_attribute(method)
+      label_content = template.content_tag(:span, label, :class => html_label_class)
 
-      if value.present? or options[:display_empty]
-        content = [
-          template.content_tag(:span, label, :class => html_label_class),
-          template.content_tag(:span, value, :class => html_value_class)
-        ].join
+      value = options.key?(:value) ? options[:value] : value_of_attribute(method)
+      value_content = template.content_tag(:span, value, :class => html_value_class)
+
+      if block_given?
+        template.concat(template.tag(:li, {:class => html_class}, true))
+        template.concat(label_content)
+        template.concat(template.tag(:span, {:class => html_value_class}, true))
+        yield
+        template.concat("</span>")
+        template.concat("</li>")
+      elsif value.present? or options[:display_empty]
+        content = [ label_content, value_content ].join
         template.content_tag(:li, content, :class => html_class)
       end
     end

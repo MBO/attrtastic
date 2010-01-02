@@ -75,4 +75,31 @@ class TestAttribute < Test::Unit::TestCase
     assert_equal expected, actual
   end
 
+  def test__attribute__with_block
+    block_run = false
+    @user_builder.attribute :full_name do
+      block_run = true
+    end
+    assert block_run
+  end
+
+  def test__attribute__output_with_block
+    expected = html <<-EOHTML
+      <li class="attribute">
+        <span class="label">Full name</span>
+        <span class="value">John Doe!!!</span>
+      </li>
+    EOHTML
+
+    @user_builder.attribute :full_name do
+      @user_builder.template.output_buffer << "John Doe"
+      3.times do
+        @user_builder.template.output_buffer << "!"
+      end
+    end
+    actual = @template.output_buffer.to_s
+    assert_equal expected, actual
+  end
+
 end
+
