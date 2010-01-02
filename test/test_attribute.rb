@@ -57,4 +57,22 @@ class TestAttribute < Test::Unit::TestCase
     assert_equal expected, actual
   end
 
+  def test__attribute__with_empty_custom_value
+    assert_nil @user_builder.attribute(:full_name, :value => nil)
+    assert_nil @user_builder.attribute(:full_name, :value => "")
+
+    expected = html <<-EOHTML
+      <li class="attribute">
+        <span class="label">Full name</span>
+        <span class="value"></span>
+      </li>
+    EOHTML
+
+    actual = @user_builder.attribute(:full_name, :value => nil, :display_empty => true)
+    assert_equal expected, actual
+
+    actual = @user_builder.attribute(:full_name, :value => "", :display_empty => true)
+    assert_equal expected, actual
+  end
+
 end
