@@ -5,16 +5,17 @@ module Attrtastic
     @@value_methods = %w/ to_label display_name full_name name title username login value to_s /
 
     attr_reader :record, :template
-    cattr_reader :label_str_method
 
     def initialize(record, template)
       @record, @template = record, template
     end
 
     def attributes(&block)
+      template.concat(template.tag(:div, {:class => "attributes"}, true))
       template.concat(template.tag(:ol, {}, true))
-      yield
+      yield if block_given?
       template.concat("</ol>")
+      template.concat("</div>")
     end
 
     def attribute(method)
@@ -46,7 +47,8 @@ module Attrtastic
     def semantic_attributes_for(record, options = {}, &block)
       options[:html] ||= {}
 
-      class_names = options[:html][:class] ? options[:htlm][:class].split(" ") : []
+      class_names = []
+      class_names << options[:html][:class] if options[:html][:class]
       class_names << "attrtastic"
       class_names << record.class.to_s.underscore # @post => "post"
 

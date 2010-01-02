@@ -10,7 +10,10 @@ class Test::Unit::TestCase
     string.split(/\n/m).map(&:strip).join
   end
   def setup_fixtures
-    @user = User.new.tap{|u| u.first_name,u.last_name = "John","Doe"}
+    @user = User.new.tap do |u|
+      u.first_name,u.last_name = "John","Doe"
+      u.email = "john@doe.com"
+    end
     @blog = Blog.new.tap{|b| b.name,b.url,b.author = "IT Pro Blog","http://www.it.pro.blog",@user}
     @blog.posts = [
       Post.new.tap{|p| p.title,p.content = "Hello World!","Hello World!\nInitial post"},
@@ -25,7 +28,7 @@ class Test::Unit::TestCase
 end
 
 class User
-  attr_accessor :first_name, :last_name
+  attr_accessor :first_name, :last_name, :email
 
   def full_name
     [last_name,first_name].join(", ")

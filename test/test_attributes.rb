@@ -1,20 +1,30 @@
 require 'helper'
 
-class TestAttrtastic < Test::Unit::TestCase
+class TestAttributes < Test::Unit::TestCase
 
   def setup
     setup_fixtures
   end
 
-  def test_attribute
+  def test__attributes__shoul_run_block
+    block_run = false
+    @user_builder.attributes do
+      block_run = true
+    end
+
+    assert block_run
+  end
+
+  def test__attributes__output
     expected = html <<-EOHTML
-      <li>
-        <span class="label">Full name</span>
-        <span class="value">Doe, John</span>
-      </li>
+      <div class="attributes">
+        <ol>
+        </ol>
+      </div>
     EOHTML
 
-    actual = @user_builder.attribute(:full_name)
+    @user_builder.attributes
+    actual = @template.output_buffer.to_s
 
     assert_equal expected, actual
   end
