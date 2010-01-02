@@ -11,11 +11,13 @@ module Attrtastic
     end
 
     def attributes(&block)
-      template.concat(template.tag(:div, {:class => "attributes"}, true))
-      template.concat(template.tag(:ol, {}, true))
-      yield if block_given?
-      template.concat("</ol>")
-      template.concat("</div>")
+      if block_given?
+        template.concat(template.tag(:div, {:class => "attributes"}, true))
+        template.concat(template.tag(:ol, {}, true))
+        yield
+        template.concat("</ol>")
+        template.concat("</div>")
+      end
     end
 
     def attribute(method)
