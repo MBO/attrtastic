@@ -11,35 +11,47 @@ module Attrtastic
     end
 
     def attributes(*args, &block)
+      options = {}
+      if args.last.kind_of? Hash
+        options = args.last
+        args = args[0 .. -2]
+      end
+      options[:html] ||= {}
+
+      html_class = [ "attributes", options[:html][:class] ].compact.join(" ")
+      template.concat(template.tag(:div, {:class => html_class}, true))
+
+      if args.first
+        header = args.first
+        html_header_class = [ "legend", options[:html][:header_class] ].compact.join(" ")
+        template.concat(template.content_tag(:div, header, :class => html_header_class))
+      end
+
       if block_given?
-        template.concat(template.tag(:div, {:class => "attributes"}, true))
-
-        if args.first
-          header = args.first
-          template.concat(template.content_tag(:div, header, {:class => "legend"}))
-        end
-
         template.concat(template.tag(:ol, {}, true))
         yield
         template.concat("</ol>")
-
-        template.concat("</div>")
       end
+
+      template.concat("</div>")
     end
 
     def attribute(method, options = {})
-      label_class = ["label"]
-      value_class = ["value"]
+      options[:html] ||= {}
+
+      html_label_class = [ "label", options[:html][:label_class] ].compact.join(" ")
+      html_value_class = [ "value", options[:html][:value_class] ].compact.join(" ")
+      html_class = [ "attribute", options[:html][:class] ].compact.join(" ")
 
       label = label_for_attribute(method)
       value = value_of_attribute(method)
 
       if value.present? or options[:display_empty]
         content = [
-          template.content_tag(:span, label, {:class => label_class.join(" ")}),
-          template.content_tag(:span, value,  {:class => value_class.join(" ")})
+          template.content_tag(:span, label, :class => html_label_class),
+          template.content_tag(:span, value, :class => html_value_class)
         ].join
-        template.content_tag(:li, content)
+        template.content_tag(:li, content, :class => html_class)
       end
     end
 
@@ -62,12 +74,9 @@ module Attrtastic
     def semantic_attributes_for(record, options = {}, &block)
       options[:html] ||= {}
 
-      class_names = []
-      class_names << options[:html][:class] if options[:html][:class]
-      class_names << "attrtastic"
-      class_names << record.class.to_s.underscore # @post => "post"
+      html_class = [ "attrtastic", record.class.to_s.underscore, options[:html][:class] ].compact.join(" ")
 
-      concat(tag(:div, { :class => class_names.join(" ")}, true))
+      concat(tag(:div, { :class => html_class}, true))
       yield SemanticAttributesBuilder.new(record, self) if block_given?
       concat("</div>")
     end

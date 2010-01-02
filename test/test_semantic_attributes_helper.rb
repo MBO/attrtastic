@@ -39,7 +39,7 @@ class TestSemanticAttributesHelper < Test::Unit::TestCase
 
   def test__semantic_attributes_for__with_options
     expected = html <<-EOHTML
-      <div class="simple show attrtastic user">
+      <div class="attrtastic user simple show">
       </div>
     EOHTML
 

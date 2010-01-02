@@ -12,11 +12,11 @@ class TestAttrtastic < Test::Unit::TestCase
         <div class="attributes">
           <div class="legend">User</div>
           <ol>
-            <li>
+            <li class="attribute strong">
               <span class="label">First name</span>
               <span class="value">John</span>
             </li>
-            <li>
+            <li class="attribute">
               <span class="label">Last name</span>
               <span class="value">Doe</span>
             </li>
@@ -26,7 +26,7 @@ class TestAttrtastic < Test::Unit::TestCase
         <div class="attributes">
           <div class="legend">Contact</div>
           <ol>
-            <li>
+            <li class="attribute">
               <span class="label">Email</span>
               <span class="value">john@doe.com</span>
             </li>
@@ -37,7 +37,7 @@ class TestAttrtastic < Test::Unit::TestCase
 
     @template.semantic_attributes_for(@user) do |attr|
       attr.attributes "User" do
-        @template.output_buffer << (attr.attribute :first_name).to_s
+        @template.output_buffer << (attr.attribute :first_name, :html => {:class => :strong}).to_s
         @template.output_buffer << (attr.attribute :last_name).to_s
         @template.output_buffer << (attr.attribute :title).to_s
       end

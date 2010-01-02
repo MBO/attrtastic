@@ -17,6 +17,8 @@ class TestAttributes < Test::Unit::TestCase
 
   def test__attributes__output_without_block
     expected = html <<-EOHTML
+      <div class="attributes">
+      </div>
     EOHTML
 
     @user_builder.attributes

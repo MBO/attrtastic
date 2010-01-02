@@ -8,7 +8,7 @@ class TestAttribute < Test::Unit::TestCase
 
   def test__attribute__output
     expected = html <<-EOHTML
-      <li>
+      <li class="attribute">
         <span class="label">Full name</span>
         <span class="value">Doe, John</span>
       </li>
@@ -23,7 +23,7 @@ class TestAttribute < Test::Unit::TestCase
     assert_nil actual
 
     expected = html <<-EOHTML
-      <li>
+      <li class="attribute">
         <span class="label">Title</span>
         <span class="value"></span>
       </li>
