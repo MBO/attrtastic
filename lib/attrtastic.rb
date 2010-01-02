@@ -49,7 +49,11 @@ module Attrtastic
       html_value_class = [ "value", options[:html][:value_class] ].compact.join(" ")
       html_class = [ "attribute", options[:html][:class] ].compact.join(" ")
 
-      label = label_for_attribute(method)
+      if options[:label]
+        label = options[:label]
+      else
+        label = label_for_attribute(method)
+      end
       value = value_of_attribute(method)
 
       if value.present? or options[:display_empty]
@@ -60,6 +64,8 @@ module Attrtastic
         template.content_tag(:li, content, :class => html_class)
       end
     end
+
+    private
 
     def label_for_attribute(method)
       if record.class.respond_to?(:human_attribute_name)
