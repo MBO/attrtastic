@@ -109,7 +109,7 @@ class TestAttribute < Test::Unit::TestCase
       </li>
     EOHTML
 
-    @user_builder.attribute :nil, :label => "Full name" do
+    @user_builder.attribute :label => "Full name" do
       @user_builder.template.output_buffer << "John Doe"
       3.times do
         @user_builder.template.output_buffer << "!"

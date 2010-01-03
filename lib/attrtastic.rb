@@ -4,7 +4,7 @@ module Attrtastic
 
     @@value_methods = %w/ to_label display_name full_name name title username login value to_s /
 
-    attr_reader :record, :template
+      attr_reader :record, :template
 
     def initialize(record, template)
       @record, @template = record, template
@@ -12,7 +12,7 @@ module Attrtastic
 
     def attributes(*args, &block)
       options = {}
-      if args.last.kind_of? Hash
+      if args.last and args.last.kind_of? Hash
         options = args.last
         args = args[0 .. -2]
       end
@@ -42,8 +42,15 @@ module Attrtastic
       template.concat("</div>")
     end
 
-    def attribute(method, options = {}, &block)
+    def attribute(*args, &block)
+      options = {}
+      if args.last and args.last.kind_of? Hash
+        options = args.last
+        args = args[0 .. -2]
+      end
       options[:html] ||= {}
+
+      method = args.shift
 
       html_label_class = [ "label", options[:html][:label_class] ].compact.join(" ")
       html_value_class = [ "value", options[:html][:value_class] ].compact.join(" ")
