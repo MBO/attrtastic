@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "attrtastic.gemspec",
      "lib/attrtastic.rb",
      "rails/init.rb",
      "test/helper.rb",
