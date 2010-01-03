@@ -101,5 +101,23 @@ class TestAttribute < Test::Unit::TestCase
     assert_equal expected, actual
   end
 
+  def test__attribute__with_block_and_custom_label
+    expected = html <<-EOHTML
+      <li class="attribute">
+        <span class="label">Full name</span>
+        <span class="value">John Doe!!!</span>
+      </li>
+    EOHTML
+
+    @user_builder.attribute :nil, :label => "Full name" do
+      @user_builder.template.output_buffer << "John Doe"
+      3.times do
+        @user_builder.template.output_buffer << "!"
+      end
+    end
+    actual = @template.output_buffer.to_s
+    assert_equal expected, actual
+  end
+
 end
 
