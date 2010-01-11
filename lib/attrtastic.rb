@@ -156,7 +156,7 @@ module Attrtastic
     #   <%= attr.attribute :name, :display_empty => true %>
     #
     # @example
-    #   <% attr.attribute :name, :label => "User link" do %>
+    #   <% attr.attribute :label => "User link" do %>
     #     <%= link_to @user.full_name, user_path(@user) %>
     #
     def attribute(*args, &block)
