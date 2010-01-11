@@ -5,8 +5,12 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "attrtastic"
-    gem.summary = %Q{summary}
-    gem.description = %Q{description}
+    gem.summary = %Q{Helps display attributes of AR record}
+    gem.description = <<-EODESC
+    Attrtastic, in its assumtion, should be similar in usage to formtastic and
+    ease of displaying AR record informations (attributes). It should help
+    scafforld show/index pages.
+    EODESC
     gem.email = "boruta.miroslaw@gmail.com"
     gem.homepage = "http://github.com/MBO/attrtastic"
     gem.authors = ["Boruta Miroslaw"]

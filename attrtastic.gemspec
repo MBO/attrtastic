@@ -9,23 +9,41 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Boruta Miroslaw"]
-  s.date = %q{2010-01-03}
-  s.description = %q{description}
+  s.date = %q{2010-01-11}
+  s.description = %q{    Attrtastic, in its assumtion, should be similar in usage to formtastic and
+    ease of displaying AR record informations (attributes). It should help
+    scafforld show/index pages.
+}
   s.email = %q{boruta.miroslaw@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
-     "README",
-     "README.rdoc"
+     "README.md"
   ]
   s.files = [
     ".document",
      ".gitignore",
      "LICENSE",
-     "README",
-     "README.rdoc",
+     "README.md",
      "Rakefile",
      "VERSION",
      "attrtastic.gemspec",
+     "doc/Attrtastic.html",
+     "doc/Attrtastic/SemanticAttributesBuilder.html",
+     "doc/Attrtastic/SemanticAttributesHelper.html",
+     "doc/_index.html",
+     "doc/class_list.html",
+     "doc/css/common.css",
+     "doc/css/full_list.css",
+     "doc/css/style.css",
+     "doc/file.README.html",
+     "doc/file_list.html",
+     "doc/frames.html",
+     "doc/index.html",
+     "doc/js/app.js",
+     "doc/js/full_list.js",
+     "doc/js/jquery.js",
+     "doc/method_list.html",
+     "doc/top-level-namespace.html",
      "lib/attrtastic.rb",
      "rails/init.rb",
      "test/helper.rb",
@@ -38,7 +56,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
-  s.summary = %q{summary}
+  s.summary = %q{Helps display attributes of AR record}
   s.test_files = [
     "test/helper.rb",
      "test/test_attrtastic.rb",
