@@ -22,8 +22,8 @@ module Attrtastic
     #   Creates attributes list without header, yields block to include each attribute
     #
     #   @param [Hash] options Options for formating attributes block
-    #   @option options [String] :class ('') Name of html class(-es) to add to attributes block
-    #   @option options [String] :header_class ('') Name of html class(-es) to add to header
+    #   @option options [String] :class ('') Name of html class to add to attributes block
+    #   @option options [String] :header_class ('') Name of html class to add to header
     #   @yield Block which can call #attribute to include attribute value
     #
     #   @example
@@ -37,8 +37,8 @@ module Attrtastic
     #
     #   @param [String] header Header of attributes section
     #   @param [Hash] options Options for formating attributes block
-    #   @option options [String] :class ('') Name of html class(-es) to add to attributes block
-    #   @option options [String] :header_class ('') Name of html class(-es) to add to header
+    #   @option options [String] :class ('') Name of html class to add to attributes block
+    #   @option options [String] :header_class ('') Name of html class to add to header
     #   @yield Block which can call #attribute to include attribute value
     #
     #   @example
@@ -52,8 +52,8 @@ module Attrtastic
     #
     #   @param [Symbol, ...] symbols List of attributes
     #   @param [Hash] options Options for formating attributes block
-    #   @option options [String] :class ('') Name of html class(-es) to add to attributes block
-    #   @option options [String] :header_class ('') Name of html class(-es) to add to header
+    #   @option options [String] :class ('') Name of html class to add to attributes block
+    #   @option options [String] :header_class ('') Name of html class to add to header
     #
     #   @example
     #     <% attr.attributes :name, :email %>
@@ -64,8 +64,8 @@ module Attrtastic
     #   @param [String] header Header of attributes section
     #   @param [Symbol, ...] symbols Optional list of attributes
     #   @param [Hash] options Options for formating attributes block
-    #   @option options [String] :class ('') Name of html class(-es) to add to attributes block
-    #   @option options [String] :header_class ('') Name of html class(-es) to add to header
+    #   @option options [String] :class ('') Name of html class to add to attributes block
+    #   @option options [String] :header_class ('') Name of html class to add to header
     #
     #   @example
     #     <% attr.attributes "User info" :name, :email %>
@@ -120,7 +120,7 @@ module Attrtastic
     #
     #   @param [Symbol] method Attribute name of given record
     #   @param [Hash] options Options
-    #   @option options [String] :html ({}) Hash with optional :class, :label_class and :value_class names of class for html
+    #   @option options [Hash] :html ({}) Hash with optional :class, :label_class and :value_class names of class for html
     #   @option options [String] :label Label for attribute entry, overrides default label name from symbol
     #   @option options [String] :value Value of attribute entry, overrides default value from record
     #   @option options [Boolean] :display_empty (false) Indicates if print value of given attribute even if it is blank?
@@ -139,17 +139,24 @@ module Attrtastic
     #
     #   @param [Symbol] method Attribute name of given record
     #   @param [Hash] options Options
-    #   @option options [String] :html ({}) Hahs with optional :class, :label_class and :value_class names of class for html
+    #   @option options [Hash] :html ({}) Hash with optional :class, :label_class and :value_class names of classes for html
     #   @option options [String] :label Label for attribute entry, overrides default label name from symbol
-    #   @option options [Boolean] :display_empty (false) Indicates if print value of given attribute even if it is blank?
     #   @yield Block which is executed in place of value for attribute
     #
     #   @example
     #     <% attr.attribute :name do %>
     #       <%= link_to @user.full_name, user_path(@user) %>
     #
+    # @overload attribute(options = {}, &block)
+    #   Creates entry for attribute with given block, options[:label] is mandatory in this case.
+    #
+    #   @param [:Hash] options Options
+    #   @option options [Hash] :html ({}) Hash with optional :class, :label_class and :value_class names of classes for html
+    #   @option options [String] :label Mandatory label for attribute entry
+    #   @yield Block which is executed in place of value for attribute
+    #
     #   @example
-    #     <% attr.attribute :name, :label => "User link" do %>
+    #     <% attr.attribute :label => "User link" do %>
     #       <%= link_to @user.full_name, user_path(@user) %>
     #
     # @example
