@@ -211,9 +211,11 @@ module Attrtastic
       end
     end
 
-    #@@value_methods = %w/ to_label display_name full_name name title username login value to_s /
     def value_of_attribute(method)
-      record.send(method).to_s
+      value = record.send(method)
+      value_methods = [ :to_label, :display_name, :full_name, :name, :title, :username, :login, :value ]
+      value_method = value_methods.find { |m| value.respond_to?(m) } || :to_s
+      value.send(value_method)
     end
 
   end
