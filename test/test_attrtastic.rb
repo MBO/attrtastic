@@ -50,7 +50,7 @@ class TestAttrtastic < Test::Unit::TestCase
     assert_equal expected, actual
   end
 
-  def test_attrtastic_compct
+  def test_attrtastic_compact
     expected = html <<-EOHTML
       <div class="attrtastic user">
         <div class="attributes">

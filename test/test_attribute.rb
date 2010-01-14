@@ -41,7 +41,7 @@ class TestAttribute < Test::Unit::TestCase
       </li>
     EOHTML
 
-    actual = @blog_builder.attribute(:author_full_name)
+    actual = @blog_builder.attribute(:author_full_name, :label => "Author")
     assert_equal expected, actual
 
     actual = @blog_builder.attribute(:author)
