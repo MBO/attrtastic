@@ -41,7 +41,7 @@ class TestAttrtastic < Test::Unit::TestCase
         @template.output_buffer << (attr.attribute :last_name).to_s
         @template.output_buffer << (attr.attribute :title).to_s
       end
-      attr.attributes "Contact" do
+      attr.attributes :name => "Contact" do
         @template.output_buffer << (attr.attribute :email).to_s
       end
     end

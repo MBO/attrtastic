@@ -53,6 +53,11 @@ class TestAttributes < Test::Unit::TestCase
     @user_builder.attributes "Legend" do end
     actual = @template.output_buffer.to_s
     assert_equal expected, actual
+
+    @template.output_buffer.clear
+    @user_builder.attributes :name => "Legend" do end
+    actual = @template.output_buffer.to_s
+    assert_equal expected, actual
   end
 
   def test__attributes__with_fields_list

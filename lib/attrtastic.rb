@@ -22,12 +22,19 @@ module Attrtastic
     #   Creates attributes list without header, yields block to include each attribute
     #
     #   @param [Hash] options Options for formating attributes block
+    #   @option options [String] :name (nil) Optional header of attributes section
     #   @option options [String] :class ('') Name of html class to add to attributes block
     #   @option options [String] :header_class ('') Name of html class to add to header
     #   @yield Block which can call #attribute to include attribute value
     #
     #   @example
     #     <% attr.attributes do %>
+    #       <%= attr.attribute :name %>
+    #       <%= attr.attribute :email %>
+    #     <% end %>
+    #
+    #   @example
+    #     <% attr.attributes :name => "User" do %>
     #       <%= attr.attribute :name %>
     #       <%= attr.attribute :email %>
     #     <% end %>
@@ -52,6 +59,7 @@ module Attrtastic
     #
     #   @param [Symbol, ...] symbols List of attributes
     #   @param [Hash] options Options for formating attributes block
+    #   @option options [String] :name (nil) Optional header of attributes section
     #   @option options [String] :class ('') Name of html class to add to attributes block
     #   @option options [String] :header_class ('') Name of html class to add to header
     #
@@ -95,6 +103,10 @@ module Attrtastic
 
       if args.first and args.first.is_a? String
         header = args.shift
+      end
+      header ||= options[:name]
+
+      if header.present?
         template.concat(template.content_tag(:div, header, :class => html_header_class))
       end
 
