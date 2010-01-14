@@ -1,4 +1,5 @@
 require 'test/unit'
+require 'shoulda'
 require 'action_view'
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
