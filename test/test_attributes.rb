@@ -112,5 +112,322 @@ class TestAttributes < Test::Unit::TestCase
       end
 
     end
+
+    context "with :for option" do
+      should "yield block" do
+        block_run = false
+        @blog_builder.attributes :for => nil do |author|
+          block_run = true
+        end
+
+        assert block_run
+      end
+
+    end
+
+    context "with :for => :method_name pointing to single object" do
+
+      should "allow to access inner object" do
+        @blog_builder.attributes :for => :author do |author|
+
+          assert_equal @blog.author, author.record
+
+        end
+      end
+
+      should "generate output for given inner object" do
+        @blog_builder.attributes :for => :author do |author|
+
+          expected = html <<-EOHTML
+            <li class="attribute">
+              <span class="label">Full name</span>
+              <span class="value">Doe, John</span>
+            </li>
+          EOHTML
+
+          actual = author.attribute :full_name
+          assert_equal expected, actual
+
+        end
+
+        expected = html <<-EOHTML
+          <div class="attributes">
+            <ol>
+            </ol>
+          </div>
+        EOHTML
+
+        actual = @template.output_buffer
+        assert_equal expected, actual
+      end
+
+      should "show header" do
+        @blog_builder.attributes "Author", :for => :author do |author|
+        end
+
+        expected = html <<-EOHTML
+          <div class="attributes">
+            <div class="legend">Author</div>
+            <ol>
+            </ol>
+          </div>
+        EOHTML
+
+        actual = @template.output_buffer
+        assert_equal expected, actual
+      end
+
+      should "work with field list" do
+        expected = html <<-EOHTML
+          <div class="attributes">
+            <ol>
+              <li class="attribute">
+                <span class="label">Full name</span>
+                <span class="value">Doe, John</span>
+              </li>
+            </ol>
+          </div>
+        EOHTML
+
+        @blog_builder.attributes :full_name, :for => :author
+
+        actual = @template.output_buffer
+        assert_equal expected, actual
+      end
+    end
+
+    context "with :for => object" do
+
+      should "allow to acces given object" do
+        @blog_builder.attributes :for => @user do |author|
+
+          assert_equal @user, author.record
+
+        end
+      end
+
+      should "generate output for given inner object" do
+        @blog_builder.attributes :for => @user do |author|
+
+          expected = html <<-EOHTML
+            <li class="attribute">
+              <span class="label">Full name</span>
+              <span class="value">Doe, John</span>
+            </li>
+          EOHTML
+
+          actual = author.attribute :full_name
+          assert_equal expected, actual
+
+        end
+
+        expected = html <<-EOHTML
+          <div class="attributes">
+            <ol>
+            </ol>
+          </div>
+        EOHTML
+
+        actual = @template.output_buffer
+        assert_equal expected, actual
+      end
+
+      should "show header" do
+        @blog_builder.attributes "Author", :for => @user do |author|
+        end
+
+        expected = html <<-EOHTML
+          <div class="attributes">
+            <div class="legend">Author</div>
+            <ol>
+            </ol>
+          </div>
+        EOHTML
+
+        actual = @template.output_buffer
+        assert_equal expected, actual
+      end
+
+      should "work with field list" do
+        expected = html <<-EOHTML
+          <div class="attributes">
+            <ol>
+              <li class="attribute">
+                <span class="label">Full name</span>
+                <span class="value">Doe, John</span>
+              </li>
+            </ol>
+          </div>
+        EOHTML
+
+        @blog_builder.attributes :full_name, :for => @user
+
+        actual = @template.output_buffer
+        assert_equal expected, actual
+      end
+    end
+
+    context "with :for => :method_name pointing to collection" do
+
+      should "allow to access inner objects one by one" do
+        posts = []
+
+        @blog_builder.attributes :for => :posts do |post|
+
+          posts << post.record
+
+        end
+
+        assert_equal @blog.posts, posts
+      end
+
+      should "generate output for given objects" do
+        @blog_builder.attributes :for => :posts do |post|
+        end
+
+        expected = html <<-EOHTML
+          <div class="attributes">
+            <ol>
+            </ol>
+          </div>
+          <div class="attributes">
+            <ol>
+            </ol>
+          </div>
+        EOHTML
+
+        actual = @template.output_buffer
+        assert_equal expected, actual
+      end
+
+      should "show header" do
+        @blog_builder.attributes "Post", :for => :posts do |post|
+        end
+
+        expected = html <<-EOHTML
+          <div class="attributes">
+            <div class="legend">Post</div>
+            <ol>
+            </ol>
+          </div>
+          <div class="attributes">
+            <div class="legend">Post</div>
+            <ol>
+            </ol>
+          </div>
+        EOHTML
+
+        actual = @template.output_buffer
+        assert_equal expected, actual
+      end
+
+      should "work with field list" do
+        expected = html <<-EOHTML
+          <div class="attributes">
+            <ol>
+              <li class="attribute">
+                <span class="label">Title</span>
+                <span class="value">Hello World!</span>
+              </li>
+            </ol>
+          </div>
+          <div class="attributes">
+            <ol>
+              <li class="attribute">
+                <span class="label">Title</span>
+                <span class="value">Sorry</span>
+              </li>
+            </ol>
+          </div>
+        EOHTML
+
+        @blog_builder.attributes :title, :for => :posts
+
+        actual = @template.output_buffer
+        assert_equal expected, actual
+      end
+    end
+
+    context "with :for => collection" do
+
+      should "allow to access inner objects one by one" do
+        posts = []
+
+        @blog_builder.attributes :for => @blog.posts do |post|
+
+          posts << post.record
+
+        end
+
+        assert_equal @blog.posts, posts
+      end
+
+      should "generate output for given objects" do
+        @blog_builder.attributes :for => @blog.posts do |post|
+        end
+
+        expected = html <<-EOHTML
+          <div class="attributes">
+            <ol>
+            </ol>
+          </div>
+          <div class="attributes">
+            <ol>
+            </ol>
+          </div>
+        EOHTML
+
+        actual = @template.output_buffer
+        assert_equal expected, actual
+      end
+
+      should "show header" do
+        @blog_builder.attributes "Post", :for => @blog.posts do |post|
+        end
+
+        expected = html <<-EOHTML
+          <div class="attributes">
+            <div class="legend">Post</div>
+            <ol>
+            </ol>
+          </div>
+          <div class="attributes">
+            <div class="legend">Post</div>
+            <ol>
+            </ol>
+          </div>
+        EOHTML
+
+        actual = @template.output_buffer
+        assert_equal expected, actual
+      end
+
+      should "work with field list" do
+        expected = html <<-EOHTML
+          <div class="attributes">
+            <ol>
+              <li class="attribute">
+                <span class="label">Title</span>
+                <span class="value">Hello World!</span>
+              </li>
+            </ol>
+          </div>
+          <div class="attributes">
+            <ol>
+              <li class="attribute">
+                <span class="label">Title</span>
+                <span class="value">Sorry</span>
+              </li>
+            </ol>
+          </div>
+        EOHTML
+
+        @blog_builder.attributes :title, :for => @blog.posts
+
+        actual = @template.output_buffer
+        assert_equal expected, actual
+      end
+    end
+
   end
 end

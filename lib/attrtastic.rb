@@ -39,6 +39,36 @@ module Attrtastic
     #       <%= attr.attribute :email %>
     #     <% end %>
     #
+    #   @example
+    #     <% attr.attributes :for => :user do |user| %>
+    #       <%= user.attribute :name %>
+    #       <%= user.attribute :email %>
+    #       <%  user.attribute :profile do %>
+    #         <%= link_to h(user.record.name), user_path(user.record) %>
+    #       <%  end %>
+    #     <% end %>
+    #
+    #   @example
+    #     <% attr.attributes :for => @user do |user| %>
+    #       <%= user.attribute :name %>
+    #       <%= user.attribute :email %>
+    #       <%  user.attribute :profile do %>
+    #         <%= link_to h(@user.name), user_path(@user) %>
+    #       <%  end %>
+    #     <% end %>
+    #
+    #   @example
+    #     <% attr.attributes :for => :posts do |post| %>
+    #       <%= post.attribute :author %>
+    #       <%= post.attribute :title %>
+    #     <% end %>
+    #
+    #   @example
+    #     <% attr.attributes :for => @posts do |post| %>
+    #       <%= post.attribute :author %>
+    #       <%= post.attribute :title %>
+    #     <% end %>
+    #
     # @overload attributes(header, options = {}, &block)
     #   Creates attributes list with header and yields block to include each attribute
     #
@@ -46,12 +76,46 @@ module Attrtastic
     #   @param [Hash] options Options for formating attributes block
     #   @option options [String] :class ('') Name of html class to add to attributes block
     #   @option options [String] :header_class ('') Name of html class to add to header
+    #   @option optinos [Symbol,Object] :for Optional new record for new builder
+    #     passed as argument block. This new record can be symbol of method name for actual
+    #     record, or any other object which is passed as new record for builder.
     #   @yield Block which can call #attribute to include attribute value
+    #   @yieldparam builder Builder instance holding actual record (retivable via #record)
     #
     #   @example
     #     <% attr.attributes "User info" do %>
     #       <%= attr.attribute :name" %>
     #       <%= attr.attribute :email %>
+    #     <% end %>
+    #
+    #   @example
+    #     <% attr.attributes "User", :for => :user do |user| %>
+    #       <%= user.attribute :name %>
+    #       <%= user.attribute :email %>
+    #       <%  user.attribute :profile do %>
+    #         <%= link_to h(user.record.name), user_path(user.record) %>
+    #       <%  end %>
+    #     <% end %>
+    #
+    #   @example
+    #     <% attr.attributes "User", :for => @user do |user| %>
+    #       <%= user.attribute :name %>
+    #       <%= user.attribute :email %>
+    #       <%  user.attribute :profile do %>
+    #         <%= link_to h(@user.name), user_path(@user) %>
+    #       <%  end %>
+    #     <% end %>
+    #
+    #   @example
+    #     <% attr.attributes "Post", :for => :posts do |post| %>
+    #       <%= post.attribute :author %>
+    #       <%= post.attribute :title %>
+    #     <% end %>
+    #
+    #   @example
+    #     <% attr.attributes "Post", :for => @posts do |post| %>
+    #       <%= post.attribute :author %>
+    #       <%= post.attribute :title %>
     #     <% end %>
     #
     # @overload attributes(*symbols, options = {})
@@ -66,6 +130,18 @@ module Attrtastic
     #   @example
     #     <% attr.attributes :name, :email %>
     #
+    #   @example
+    #     <% attr.attributes :name, :email, :for => :author %>
+    #
+    #   @example
+    #     <% attr.attributes :name, :email, :for => @user %>
+    #
+    #   @example
+    #     <% attr.attributes :title, :for => :posts %>
+    #
+    #   @example
+    #     <% attr.attributes :title, :for => @posts %>
+    #
     # @overload attributes(header, *symbols, options = {})
     #   Creates attributes list with header, attributes are given as list of symbols (record properties)
     #
@@ -77,6 +153,18 @@ module Attrtastic
     #
     #   @example
     #     <% attr.attributes "User info" :name, :email %>
+    #
+    #   @example
+    #     <% attr.attributes "Author", :name, :email, :for => :author %>
+    #
+    #   @example
+    #     <% attr.attributes "Author", :name, :email, :for => @user %>
+    #
+    #   @example
+    #     <% attr.attributes "Post", :title, :for => :posts %>
+    #
+    #   @example
+    #     <% attr.attributes "Post", :title, :for => @posts %>
     #
     # @example All together
     #   <% attr.attributes "User info", :name, :email, :class => "user_info", :header_class => "header important" %>
@@ -96,32 +184,24 @@ module Attrtastic
       end
       options[:html] ||= {}
 
-      html_class = [ "attributes", options[:html].delete(:class) ].compact.join(" ")
-      html_header_class = [ "legend", options[:html].delete(:header_class) ].compact.join(" ")
-
-      template.concat(template.tag(:div, {:class => html_class}, true))
-
       if args.first and args.first.is_a? String
-        header = args.shift
-      end
-      header ||= options[:name]
-
-      if header.present?
-        template.concat(template.content_tag(:div, header, :class => html_header_class))
+        options[:name] = args.shift
       end
 
-      if block_given?
-        template.concat(template.tag(:ol, {}, true))
-        yield
-        template.concat("</ol>")
-      elsif args.present?
-        template.concat(template.tag(:ol, {}, true))
-        attrs = args.map {|method| attribute(method, options)}.compact.join
-        template.concat(attrs)
-        template.concat("</ol>")
+      if options[:for].blank?
+        attributes_for(record, args, options, &block)
+      else
+        if options[:for].is_a? Symbol
+          for_value = record.send(options[:for])
+        else
+          for_value = options[:for]
+        end
+
+        [*for_value].each do |value|
+          attributes_for(value, args, options, &block)
+        end
       end
 
-      template.concat("</div>")
     end
 
     ##
@@ -214,6 +294,34 @@ module Attrtastic
     end
 
     private
+
+    def attributes_for(object, methods, options, &block)
+      new_builder = self.class.new(object, template)
+
+      html_class = [ "attributes", options[:html].delete(:class) ].compact.join(" ")
+      html_header_class = [ "legend", options[:html].delete(:header_class) ].compact.join(" ")
+
+      template.concat(template.tag(:div, {:class => html_class}, true))
+
+      header = options[:name]
+
+      if header.present?
+        template.concat(template.content_tag(:div, header, :class => html_header_class))
+      end
+
+      if block_given?
+        template.concat(template.tag(:ol, {}, true))
+        yield(new_builder)
+        template.concat("</ol>")
+      elsif methods.present?
+        template.concat(template.tag(:ol, {}, true))
+        attrs = methods.map {|method| new_builder.attribute(method, options)}.compact.join
+        template.concat(attrs)
+        template.concat("</ol>")
+      end
+
+      template.concat("</div>")
+    end
 
     def label_for_attribute(method)
       if record.class.respond_to?(:human_attribute_name)
