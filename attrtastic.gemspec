@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{attrtastic}
-  s.version = "0.1.3"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Boruta Miroslaw"]
-  s.date = %q{2010-01-11}
+  s.date = %q{2010-01-15}
   s.description = %q{    Attrtastic, in its assumtion, should be similar in usage to formtastic and
     ease of displaying AR record informations (attributes). It should help
     scafforld show/index pages.
@@ -71,11 +71,14 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<yard>, [">= 0"])
+      s.add_development_dependency(%q<shoulda>, [">= 0"])
     else
       s.add_dependency(%q<yard>, [">= 0"])
+      s.add_dependency(%q<shoulda>, [">= 0"])
     end
   else
     s.add_dependency(%q<yard>, [">= 0"])
+    s.add_dependency(%q<shoulda>, [">= 0"])
   end
 end
 
