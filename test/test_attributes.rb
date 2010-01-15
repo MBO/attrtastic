@@ -151,7 +151,7 @@ class TestAttributes < Test::Unit::TestCase
         end
 
         expected = html <<-EOHTML
-          <div class="attributes">
+          <div class="attributes user">
             <ol>
             </ol>
           </div>
@@ -166,7 +166,7 @@ class TestAttributes < Test::Unit::TestCase
         end
 
         expected = html <<-EOHTML
-          <div class="attributes">
+          <div class="attributes user">
             <div class="legend">Author</div>
             <ol>
             </ol>
@@ -179,7 +179,7 @@ class TestAttributes < Test::Unit::TestCase
 
       should "work with field list" do
         expected = html <<-EOHTML
-          <div class="attributes">
+          <div class="attributes user">
             <ol>
               <li class="attribute">
                 <span class="label">Full name</span>
@@ -222,7 +222,7 @@ class TestAttributes < Test::Unit::TestCase
         end
 
         expected = html <<-EOHTML
-          <div class="attributes">
+          <div class="attributes user">
             <ol>
             </ol>
           </div>
@@ -237,7 +237,7 @@ class TestAttributes < Test::Unit::TestCase
         end
 
         expected = html <<-EOHTML
-          <div class="attributes">
+          <div class="attributes user">
             <div class="legend">Author</div>
             <ol>
             </ol>
@@ -250,7 +250,7 @@ class TestAttributes < Test::Unit::TestCase
 
       should "work with field list" do
         expected = html <<-EOHTML
-          <div class="attributes">
+          <div class="attributes user">
             <ol>
               <li class="attribute">
                 <span class="label">Full name</span>
@@ -286,11 +286,11 @@ class TestAttributes < Test::Unit::TestCase
         end
 
         expected = html <<-EOHTML
-          <div class="attributes">
+          <div class="attributes post">
             <ol>
             </ol>
           </div>
-          <div class="attributes">
+          <div class="attributes post">
             <ol>
             </ol>
           </div>
@@ -305,12 +305,12 @@ class TestAttributes < Test::Unit::TestCase
         end
 
         expected = html <<-EOHTML
-          <div class="attributes">
+          <div class="attributes post">
             <div class="legend">Post</div>
             <ol>
             </ol>
           </div>
-          <div class="attributes">
+          <div class="attributes post">
             <div class="legend">Post</div>
             <ol>
             </ol>
@@ -323,7 +323,7 @@ class TestAttributes < Test::Unit::TestCase
 
       should "work with field list" do
         expected = html <<-EOHTML
-          <div class="attributes">
+          <div class="attributes post">
             <ol>
               <li class="attribute">
                 <span class="label">Title</span>
@@ -331,7 +331,7 @@ class TestAttributes < Test::Unit::TestCase
               </li>
             </ol>
           </div>
-          <div class="attributes">
+          <div class="attributes post">
             <ol>
               <li class="attribute">
                 <span class="label">Title</span>
@@ -367,11 +367,11 @@ class TestAttributes < Test::Unit::TestCase
         end
 
         expected = html <<-EOHTML
-          <div class="attributes">
+          <div class="attributes post">
             <ol>
             </ol>
           </div>
-          <div class="attributes">
+          <div class="attributes post">
             <ol>
             </ol>
           </div>
@@ -386,12 +386,12 @@ class TestAttributes < Test::Unit::TestCase
         end
 
         expected = html <<-EOHTML
-          <div class="attributes">
+          <div class="attributes post">
             <div class="legend">Post</div>
             <ol>
             </ol>
           </div>
-          <div class="attributes">
+          <div class="attributes post">
             <div class="legend">Post</div>
             <ol>
             </ol>
@@ -404,7 +404,7 @@ class TestAttributes < Test::Unit::TestCase
 
       should "work with field list" do
         expected = html <<-EOHTML
-          <div class="attributes">
+          <div class="attributes post">
             <ol>
               <li class="attribute">
                 <span class="label">Title</span>
@@ -412,7 +412,7 @@ class TestAttributes < Test::Unit::TestCase
               </li>
             </ol>
           </div>
-          <div class="attributes">
+          <div class="attributes post">
             <ol>
               <li class="attribute">
                 <span class="label">Title</span>

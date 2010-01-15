@@ -198,6 +198,9 @@ module Attrtastic
         end
 
         [*for_value].each do |value|
+          value_options = options.clone
+          value_options[:html][:class] = [ options[:html][:class], value.class.to_s.underscore ].compact.join(" ")
+
           attributes_for(value, args, options, &block)
         end
       end
