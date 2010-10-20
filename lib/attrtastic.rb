@@ -4,6 +4,9 @@
 # pages.
 #
 # @author Boruta Mirosław
+
+require File.join(File.dirname(__FILE__), *%w[attrtastic railtie]) if defined?(::Rails::Railtie)
+
 module Attrtastic
 
   class SemanticAttributesBuilder

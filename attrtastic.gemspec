@@ -45,6 +45,7 @@ Gem::Specification.new do |s|
      "doc/method_list.html",
      "doc/top-level-namespace.html",
      "lib/attrtastic.rb",
+     "lib/attrtastic/railtie.rb",
      "rails/init.rb",
      "test/helper.rb",
      "test/test_attribute.rb",
