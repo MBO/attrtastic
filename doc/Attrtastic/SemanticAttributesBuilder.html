@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
 <title>Class: Attrtastic::SemanticAttributesBuilder</title>
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -24,7 +24,7 @@
       <div id="menu">
   
     <a href="../_index.html">Index (S)</a> &raquo; 
-    <span class='title'><a href="../Attrtastic.html" title="Attrtastic (module)">Attrtastic</a></span>
+    <span class='title'><span class='object_link'><a href="../Attrtastic.html" title="Attrtastic (module)">Attrtastic</a></span></span>
      &raquo; 
     <span class="title">SemanticAttributesBuilder</span>
   
@@ -43,7 +43,8 @@
     
     <iframe id="search_frame"></iframe>
     
-    <div id="content"><h1>Class: Attrtastic::SemanticAttributesBuilder 
+    <div id="content"><h1>Class: Attrtastic::SemanticAttributesBuilder
+  
   
   
 </h1>
@@ -71,15 +72,16 @@
     
   
   
+  
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/attrtastic.rb</dd>
+    <dd class="r2 last">lib/attrtastic/semantic_attributes_builder.rb</dd>
   
 </dl>
 <div class="clear"></div>
 
 
 
-  <h2>Instance Attribute Summary</h2>
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
     
       <li class="public ">
@@ -98,12 +100,13 @@
   
   
   
+  
 
   
-    <span class="summary_desc">
+    <span class="summary_desc"><div class='inline'><p>
 Only for testing purposes.
-
-</span>
+</p>
+</div></span>
   
 </li>
 
@@ -124,12 +127,13 @@ Only for testing purposes.
   
   
   
+  
 
   
-    <span class="summary_desc">
+    <span class="summary_desc"><div class='inline'><p>
 Only for testing purposes.
-
-</span>
+</p>
+</div></span>
   
 </li>
 
@@ -137,11 +141,15 @@ Only for testing purposes.
   </ul>
 
 
-  <h2>Instance Method Summary</h2>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
 
-  <ul class="summary">
-    
-      <li class="public ">
+    <ul class="summary">
+      
+        <li class="public ">
   <span class="summary_signature">
     
       <a href="#attribute-instance_method" title="#attribute (instance method)">- (Object) <strong>attribute</strong>(*args, &amp;block) </a>
@@ -154,17 +162,18 @@ Only for testing purposes.
   
   
   
+  
 
   
-    <span class="summary_desc">
+    <span class="summary_desc"><div class='inline'><p>
 Creates list entry for single record attribute.
-
-</span>
+</p>
+</div></span>
   
 </li>
 
-    
-      <li class="public ">
+      
+        <li class="public ">
   <span class="summary_signature">
     
       <a href="#attributes-instance_method" title="#attributes (instance method)">- (Object) <strong>attributes</strong>(*args, &amp;block) </a>
@@ -177,17 +186,18 @@ Creates list entry for single record attribute.
   
   
   
+  
 
   
-    <span class="summary_desc">
+    <span class="summary_desc"><div class='inline'><p>
 Creates block of attributes with optional header.
-
-</span>
+</p>
+</div></span>
   
 </li>
 
-    
-      <li class="public ">
+      
+        <li class="public ">
   <span class="summary_signature">
     
       <a href="#initialize-instance_method" title="#initialize (instance method)">- (SemanticAttributesBuilder) <strong>initialize</strong>(record, template) </a>
@@ -202,24 +212,27 @@ Creates block of attributes with optional header.
   
   
   
+  
 
   
-    <span class="summary_desc">
+    <span class="summary_desc"><div class='inline'><p>
 A new instance of SemanticAttributesBuilder.
-
-</span>
+</p>
+</div></span>
   
 </li>
 
-    
-  </ul>
+      
+    </ul>
+  
+
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
   <p class="signature first" id="initialize-instance_method">
   
-    - (<tt><a href="" title="Attrtastic::SemanticAttributesBuilder (class)">SemanticAttributesBuilder</a></tt>) <strong>initialize</strong>(record, template) 
+    - (<tt><span class='object_link'><a href="" title="Attrtastic::SemanticAttributesBuilder (class)">SemanticAttributesBuilder</a></span></tt>) <strong>initialize</strong>(record, template) 
   
 
   
@@ -240,12 +253,12 @@ A new instance of SemanticAttributesBuilder
       <pre class="lines">
 
 
-14
-15
-16</pre>
+9
+10
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/attrtastic.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/attrtastic/semantic_attributes_builder.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id record'>record</span><span class='comma'>,</span> <span class='id template'>template</span><span class='rparen'>)</span>
   <span class='ivar'>@record</span><span class='comma'>,</span> <span class='ivar'>@template</span> <span class='op'>=</span> <span class='id record'>record</span><span class='comma'>,</span> <span class='id template'>template</span>
@@ -287,12 +300,12 @@ Only for testing purposes
       <pre class="lines">
 
 
-12
-13
-14</pre>
+7
+8
+9</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/attrtastic.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/attrtastic/semantic_attributes_builder.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id record'>record</span>
   <span class='ivar'>@record</span>
@@ -329,12 +342,12 @@ Only for testing purposes
       <pre class="lines">
 
 
-12
-13
-14</pre>
+7
+8
+9</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/attrtastic.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/attrtastic/semantic_attributes_builder.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id template'>template</span>
   <span class='ivar'>@template</span>
@@ -357,9 +370,9 @@ Only for testing purposes
     
       <span class="overload">- (<tt>Object</tt>) <strong>attribute</strong>(method, options = {}) </span>
     
-      <span class="overload">- (<tt>Object</tt>) <strong>attribute</strong>(method, options = {}, &amp;block) { ... }</span>
+      <span class="overload">- (<tt>Object</tt>) <strong>attribute</strong>(method, options = {}) { ... }</span>
     
-      <span class="overload">- (<tt>Object</tt>) <strong>attribute</strong>(options = {}, &amp;block) { ... }</span>
+      <span class="overload">- (<tt>Object</tt>) <strong>attribute</strong>(options = {}) { ... }</span>
     
   
 
@@ -378,12 +391,12 @@ Creates list entry for single record attribute
   <div class="examples">
     <h3>Examples:</h3>
     
-      <h4></h4>
-      <pre class="example code">  &lt;%= attr.attribute :name, :display_empty =&gt; true %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attribute :name, :display_empty =&gt; true %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attribute :label =&gt; &quot;User link&quot; do %&gt;
-    &lt;%= link_to @user.full_name, user_path(@user) %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attribute :label =&gt; &quot;User link&quot; do %&gt;
+  &lt;%= link_to @user.full_name, user_path(@user) %&gt;</pre>
     
   </div>
 
@@ -407,14 +420,14 @@ Creates entry for record attribute
   <div class="examples">
     <h3>Examples:</h3>
     
-      <h4></h4>
-      <pre class="example code">  &lt;%= attr.attribute :name %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attribute :name %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;%= attr.attribute :name, :label =&gt; &quot;Full user name&quot; %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attribute :name, :label =&gt; &quot;Full user name&quot; %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;%= attr.attribute :name, :value =&gt; @user.full_name %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attribute :name, :value =&gt; @user.full_name %&gt;</pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -430,10 +443,10 @@ Creates entry for record attribute
       
       
         &mdash;
-        
+        <div class='inline'><p>
 Attribute name of given record
-
-
+</p>
+</div>
       
     </li>
   
@@ -447,10 +460,10 @@ Attribute name of given record
       
       
         &mdash;
-        
+        <div class='inline'><p>
 Options
-
-
+</p>
+</div>
       
     </li>
   
@@ -473,11 +486,11 @@ Options
               <tt>{}</tt>
             
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Hash with optional :class, :label_class and :value_class names of class for
 html
-
-
+</p>
+</div>
         </tr>
       
         <li>
@@ -485,13 +498,11 @@ html
           <span class="name">:label</span>
           <span class="default">
             
-              <span class="na">N/A</span>
-            
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Label for attribute entry, overrides default label name from symbol
-
-
+</p>
+</div>
         </tr>
       
         <li>
@@ -499,13 +510,11 @@ Label for attribute entry, overrides default label name from symbol
           <span class="name">:value</span>
           <span class="default">
             
-              <span class="na">N/A</span>
-            
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Value of attribute entry, overrides default value from record
-
-
+</p>
+</div>
         </tr>
       
         <li>
@@ -517,10 +526,10 @@ Value of attribute entry, overrides default value from record
               <tt>false</tt>
             
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Indicates if print value of given attribute even if it is blank?
-
-
+</p>
+</div>
         </tr>
       
     </ul>
@@ -531,7 +540,7 @@ Indicates if print value of given attribute even if it is blank?
     
       
       <li class="overload_item">
-        <span class="signature">- (<tt>Object</tt>) <strong>attribute</strong>(method, options = {}, &amp;block) { ... }</span>
+        <span class="signature">- (<tt>Object</tt>) <strong>attribute</strong>(method, options = {}) { ... }</span>
         <div class="docstring">
   <div class="discussion">
     <p>
@@ -546,9 +555,9 @@ Creates entry for attribute given with block
   <div class="examples">
     <h3>Examples:</h3>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attribute :name do %&gt;
-    &lt;%= link_to @user.full_name, user_path(@user) %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attribute :name do %&gt;
+  &lt;%= link_to @user.full_name, user_path(@user) %&gt;</pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -564,10 +573,10 @@ Creates entry for attribute given with block
       
       
         &mdash;
-        
+        <div class='inline'><p>
 Attribute name of given record
-
-
+</p>
+</div>
       
     </li>
   
@@ -581,10 +590,10 @@ Attribute name of given record
       
       
         &mdash;
-        
+        <div class='inline'><p>
 Options
-
-
+</p>
+</div>
       
     </li>
   
@@ -607,11 +616,11 @@ Options
               <tt>{}</tt>
             
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Hash with optional :class, :label_class and :value_class names of classes
 for html
-
-
+</p>
+</div>
         </tr>
       
         <li>
@@ -619,19 +628,15 @@ for html
           <span class="name">:label</span>
           <span class="default">
             
-              <span class="na">N/A</span>
-            
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Label for attribute entry, overrides default label name from symbol
-
-
+</p>
+</div>
         </tr>
       
     </ul>
   
-    
-    
 <h3>Yields:</h3>
 <ul class="yield">
   
@@ -643,10 +648,10 @@ Label for attribute entry, overrides default label name from symbol
       
       
         
-        
+        <div class='inline'><p>
 Block which is executed in place of value for attribute
-
-
+</p>
+</div>
       
     </li>
   
@@ -657,7 +662,7 @@ Block which is executed in place of value for attribute
     
       
       <li class="overload_item">
-        <span class="signature">- (<tt>Object</tt>) <strong>attribute</strong>(options = {}, &amp;block) { ... }</span>
+        <span class="signature">- (<tt>Object</tt>) <strong>attribute</strong>(options = {}) { ... }</span>
         <div class="docstring">
   <div class="discussion">
     <p>
@@ -673,9 +678,9 @@ in this case.
   <div class="examples">
     <h3>Examples:</h3>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attribute :label =&gt; &quot;User link&quot; do %&gt;
-    &lt;%= link_to @user.full_name, user_path(@user) %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attribute :label =&gt; &quot;User link&quot; do %&gt;
+  &lt;%= link_to @user.full_name, user_path(@user) %&gt;</pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -691,10 +696,10 @@ in this case.
       
       
         &mdash;
-        
+        <div class='inline'><p>
 Options
-
-
+</p>
+</div>
       
     </li>
   
@@ -715,11 +720,11 @@ Options
               <tt>{}</tt>
             
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Hash with optional :class, :label_class and :value_class names of classes
 for html
-
-
+</p>
+</div>
         </tr>
       
         <li>
@@ -727,19 +732,15 @@ for html
           <span class="name">:label</span>
           <span class="default">
             
-              <span class="na">N/A</span>
-            
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Mandatory label for attribute entry
-
-
+</p>
+</div>
         </tr>
       
     </ul>
   
-    
-    
 <h3>Yields:</h3>
 <ul class="yield">
   
@@ -751,10 +752,10 @@ Mandatory label for attribute entry
       
       
         
-        
+        <div class='inline'><p>
 Block which is executed in place of value for attribute
-
-
+</p>
+</div>
       
     </li>
   
@@ -771,6 +772,12 @@ Block which is executed in place of value for attribute
       <pre class="lines">
 
 
+255
+256
+257
+258
+259
+260
 261
 262
 263
@@ -794,27 +801,13 @@ Block which is executed in place of value for attribute
 281
 282
 283
-284
-285
-286
-287
-288
-289
-290
-291
-292
-293
-294</pre>
+284</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/attrtastic.rb', line 261</span>
+      <pre class="code"><span class="info file"># File 'lib/attrtastic/semantic_attributes_builder.rb', line 255</span>
 
 <span class='kw'>def</span> <span class='id attribute'>attribute</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-  <span class='kw'>if</span> <span class='id args'>args</span><span class='period'>.</span><span class='id last'>last</span> <span class='kw'>and</span> <span class='id args'>args</span><span class='period'>.</span><span class='id last'>last</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span> <span class='const'>Hash</span>
-    <span class='id options'>options</span> <span class='op'>=</span> <span class='id args'>args</span><span class='period'>.</span><span class='id last'>last</span>
-    <span class='id args'>args</span> <span class='op'>=</span> <span class='id args'>args</span><span class='lbracket'>[</span><span class='int'>0</span> <span class='op'>..</span> <span class='op'>-</span><span class='int'>2</span><span class='rbracket'>]</span>
-  <span class='kw'>end</span>
+  <span class='id options'>options</span> <span class='op'>=</span> <span class='id args'>args</span><span class='period'>.</span><span class='id extract_options!'>extract_options!</span>
   <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:html</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
 
   <span class='id method'>method</span> <span class='op'>=</span> <span class='id args'>args</span><span class='period'>.</span><span class='id shift'>shift</span>
@@ -824,23 +817,23 @@ Block which is executed in place of value for attribute
   <span class='id html_class'>html_class</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>attribute</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:html</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:class</span><span class='rbracket'>]</span> <span class='rbracket'>]</span><span class='period'>.</span><span class='id compact'>compact</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 
   <span class='id label'>label</span> <span class='op'>=</span> <span class='id options'>options</span><span class='period'>.</span><span class='id key?'>key?</span><span class='lparen'>(</span><span class='symbol'>:label</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:label</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='id label_for_attribute'>label_for_attribute</span><span class='lparen'>(</span><span class='id method'>method</span><span class='rparen'>)</span>
-  <span class='id label_content'>label_content</span> <span class='op'>=</span> <span class='id template'>template</span><span class='period'>.</span><span class='id content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:span</span><span class='comma'>,</span> <span class='id label'>label</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='id html_label_class'>html_label_class</span><span class='rparen'>)</span>
 
   <span class='kw'>unless</span> <span class='id block_given?'>block_given?</span>
     <span class='id value'>value</span> <span class='op'>=</span> <span class='id options'>options</span><span class='period'>.</span><span class='id key?'>key?</span><span class='lparen'>(</span><span class='symbol'>:value</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:value</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='id value_of_attribute'>value_of_attribute</span><span class='lparen'>(</span><span class='id method'>method</span><span class='rparen'>)</span>
-    <span class='id value_content'>value_content</span> <span class='op'>=</span> <span class='id template'>template</span><span class='period'>.</span><span class='id content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:span</span><span class='comma'>,</span> <span class='id value'>value</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='id html_value_class'>html_value_class</span><span class='rparen'>)</span>
 
     <span class='kw'>if</span> <span class='id value'>value</span><span class='period'>.</span><span class='id present?'>present?</span> <span class='kw'>or</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:display_empty</span><span class='rbracket'>]</span>
-      <span class='id content'>content</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='id label_content'>label_content</span><span class='comma'>,</span> <span class='id value_content'>value_content</span> <span class='rbracket'>]</span><span class='period'>.</span><span class='id join'>join</span>
-      <span class='id template'>template</span><span class='period'>.</span><span class='id content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:li</span><span class='comma'>,</span> <span class='id content'>content</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='id html_class'>html_class</span><span class='rparen'>)</span>
+      <span class='id output'>output</span> <span class='op'>=</span> <span class='id template'>template</span><span class='period'>.</span><span class='id tag'>tag</span><span class='lparen'>(</span><span class='symbol'>:li</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='id html_class'>html_class</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+      <span class='id output'>output</span> <span class='op'>&lt;&lt;</span> <span class='id template'>template</span><span class='period'>.</span><span class='id content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:span</span><span class='comma'>,</span> <span class='id label'>label</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='id html_label_class'>html_label_class</span><span class='rparen'>)</span>
+      <span class='id output'>output</span> <span class='op'>&lt;&lt;</span> <span class='id template'>template</span><span class='period'>.</span><span class='id content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:span</span><span class='comma'>,</span> <span class='id value'>value</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='id html_value_class'>html_value_class</span><span class='rparen'>)</span>
+      <span class='id output'>output</span><span class='period'>.</span><span class='id safe_concat'>safe_concat</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/li&gt;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
-    <span class='id template'>template</span><span class='period'>.</span><span class='id concat'>concat</span><span class='lparen'>(</span><span class='id template'>template</span><span class='period'>.</span><span class='id tag'>tag</span><span class='lparen'>(</span><span class='symbol'>:li</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='id html_class'>html_class</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='id template'>template</span><span class='period'>.</span><span class='id concat'>concat</span><span class='lparen'>(</span><span class='id label_content'>label_content</span><span class='rparen'>)</span>
-    <span class='id template'>template</span><span class='period'>.</span><span class='id concat'>concat</span><span class='lparen'>(</span><span class='id template'>template</span><span class='period'>.</span><span class='id tag'>tag</span><span class='lparen'>(</span><span class='symbol'>:span</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='id html_value_class'>html_value_class</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='kw'>yield</span>
-    <span class='id template'>template</span><span class='period'>.</span><span class='id concat'>concat</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/span&gt;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-    <span class='id template'>template</span><span class='period'>.</span><span class='id concat'>concat</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/li&gt;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id output'>output</span> <span class='op'>=</span> <span class='id template'>template</span><span class='period'>.</span><span class='id tag'>tag</span><span class='lparen'>(</span><span class='symbol'>:li</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='id html_class'>html_class</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='id output'>output</span> <span class='op'>&lt;&lt;</span> <span class='id template'>template</span><span class='period'>.</span><span class='id content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:span</span><span class='comma'>,</span> <span class='id label'>label</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='id html_label_class'>html_label_class</span><span class='rparen'>)</span>
+    <span class='id output'>output</span> <span class='op'>&lt;&lt;</span> <span class='id template'>template</span><span class='period'>.</span><span class='id tag'>tag</span><span class='lparen'>(</span><span class='symbol'>:span</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='id html_value_class'>html_value_class</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='id output'>output</span> <span class='op'>&lt;&lt;</span> <span class='id template'>template</span><span class='period'>.</span><span class='id capture'>capture</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+    <span class='id output'>output</span><span class='period'>.</span><span class='id safe_concat'>safe_concat</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/span&gt;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id output'>output</span><span class='period'>.</span><span class='id safe_concat'>safe_concat</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/li&gt;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -852,9 +845,9 @@ Block which is executed in place of value for attribute
   <p class="signature " id="attributes-instance_method">
   
     
-      <span class="overload">- (<tt>Object</tt>) <strong>attributes</strong>(options = {}, &amp;block) { ... }</span>
+      <span class="overload">- (<tt>Object</tt>) <strong>attributes</strong>(options = {}) { ... }</span>
     
-      <span class="overload">- (<tt>Object</tt>) <strong>attributes</strong>(header, options = {}, &amp;block) {|builderBuilderinstanceholdingactualrecord| ... }</span>
+      <span class="overload">- (<tt>Object</tt>) <strong>attributes</strong>(header, options = {}) {|builder| ... }</span>
     
       <span class="overload">- (<tt>Object</tt>) <strong>attributes</strong>(*symbols, options = {}) </span>
     
@@ -878,20 +871,20 @@ with ordered list.
   <div class="examples">
     <h3>Examples:</h3>
     
-      <h4>
+      <h4><div class='inline'><p>
 All together
-
-</h4>
-      <pre class="example code">  &lt;% attr.attributes &quot;User info&quot;, :name, :email, :class =&gt; &quot;user_info&quot;, :header_class =&gt; &quot;header important&quot; %&gt;</pre>
+</p>
+</div></h4>
+      <pre class="example code">&lt;%= attr.attributes &quot;User info&quot;, :name, :email, :class =&gt; &quot;user_info&quot;, :header_class =&gt; &quot;header important&quot; %&gt;</pre>
     
-      <h4>
+      <h4><div class='inline'><p>
 With block
-
-</h4>
-      <pre class="example code">  &lt;% attr.attributes &quot;User info&quot; :class =&gt; &quot;user_info&quot;, :header_class =&gt; &quot;header important&quot; do %&gt;
-    &lt;%= attr.attribute :name %&gt;
-    &lt;%= attr.attribute :email %&gt;
-  &lt;% end %&gt;</pre>
+</p>
+</div></h4>
+      <pre class="example code">&lt;%= attr.attributes &quot;User info&quot; :class =&gt; &quot;user_info&quot;, :header_class =&gt; &quot;header important&quot; do %&gt;
+  &lt;%= attr.attribute :name %&gt;
+  &lt;%= attr.attribute :email %&gt;
+&lt;% end %&gt;</pre>
     
   </div>
 
@@ -900,7 +893,7 @@ With block
     
       
       <li class="overload_item">
-        <span class="signature">- (<tt>Object</tt>) <strong>attributes</strong>(options = {}, &amp;block) { ... }</span>
+        <span class="signature">- (<tt>Object</tt>) <strong>attributes</strong>(options = {}) { ... }</span>
         <div class="docstring">
   <div class="discussion">
     <p>
@@ -916,47 +909,47 @@ attribute
   <div class="examples">
     <h3>Examples:</h3>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes do %&gt;
-    &lt;%= attr.attribute :name %&gt;
-    &lt;%= attr.attribute :email %&gt;
-  &lt;% end %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes do %&gt;
+  &lt;%= attr.attribute :name %&gt;
+  &lt;%= attr.attribute :email %&gt;
+&lt;% end %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes :name =&gt; &quot;User&quot; do %&gt;
-    &lt;%= attr.attribute :name %&gt;
-    &lt;%= attr.attribute :email %&gt;
-  &lt;% end %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes :name =&gt; &quot;User&quot; do %&gt;
+  &lt;%= attr.attribute :name %&gt;
+  &lt;%= attr.attribute :email %&gt;
+&lt;% end %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes :for =&gt; :user do |user| %&gt;
-    &lt;%= user.attribute :name %&gt;
-    &lt;%= user.attribute :email %&gt;
-    &lt;%  user.attribute :profile do %&gt;
-      &lt;%= link_to h(user.record.name), user_path(user.record) %&gt;
-    &lt;%  end %&gt;
-  &lt;% end %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes :for =&gt; :user do |user| %&gt;
+  &lt;%= user.attribute :name %&gt;
+  &lt;%= user.attribute :email %&gt;
+  &lt;%= user.attribute :profile do %&gt;
+    &lt;%= link_to h(user.record.name), user_path(user.record) %&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes :for =&gt; @user do |user| %&gt;
-    &lt;%= user.attribute :name %&gt;
-    &lt;%= user.attribute :email %&gt;
-    &lt;%  user.attribute :profile do %&gt;
-      &lt;%= link_to h(@user.name), user_path(@user) %&gt;
-    &lt;%  end %&gt;
-  &lt;% end %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes :for =&gt; @user do |user| %&gt;
+  &lt;%= user.attribute :name %&gt;
+  &lt;%= user.attribute :email %&gt;
+  &lt;%= user.attribute :profile do %&gt;
+    &lt;%= link_to h(@user.name), user_path(@user) %&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes :for =&gt; :posts do |post| %&gt;
-    &lt;%= post.attribute :author %&gt;
-    &lt;%= post.attribute :title %&gt;
-  &lt;% end %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes :for =&gt; :posts do |post| %&gt;
+  &lt;%= post.attribute :author %&gt;
+  &lt;%= post.attribute :title %&gt;
+&lt;% end %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes :for =&gt; @posts do |post| %&gt;
-    &lt;%= post.attribute :author %&gt;
-    &lt;%= post.attribute :title %&gt;
-  &lt;% end %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes :for =&gt; @posts do |post| %&gt;
+  &lt;%= post.attribute :author %&gt;
+  &lt;%= post.attribute :title %&gt;
+&lt;% end %&gt;</pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -972,10 +965,10 @@ attribute
       
       
         &mdash;
-        
+        <div class='inline'><p>
 Options for formating attributes block
-
-
+</p>
+</div>
       
     </li>
   
@@ -996,10 +989,10 @@ Options for formating attributes block
               <tt>nil</tt>
             
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Optional header of attributes section
-
-
+</p>
+</div>
         </tr>
       
         <li>
@@ -1011,10 +1004,10 @@ Optional header of attributes section
               <tt>''</tt>
             
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Name of html class to add to attributes block
-
-
+</p>
+</div>
         </tr>
       
         <li>
@@ -1026,16 +1019,14 @@ Name of html class to add to attributes block
               <tt>''</tt>
             
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Name of html class to add to header
-
-
+</p>
+</div>
         </tr>
       
     </ul>
   
-    
-    
 <h3>Yields:</h3>
 <ul class="yield">
   
@@ -1047,10 +1038,10 @@ Name of html class to add to header
       
       
         
-        
+        <div class='inline'><p>
 Block which can call #attribute to include attribute value
-
-
+</p>
+</div>
       
     </li>
   
@@ -1061,7 +1052,7 @@ Block which can call #attribute to include attribute value
     
       
       <li class="overload_item">
-        <span class="signature">- (<tt>Object</tt>) <strong>attributes</strong>(header, options = {}, &amp;block) {|builderBuilderinstanceholdingactualrecord| ... }</span>
+        <span class="signature">- (<tt>Object</tt>) <strong>attributes</strong>(header, options = {}) {|builder| ... }</span>
         <div class="docstring">
   <div class="discussion">
     <p>
@@ -1077,41 +1068,41 @@ attribute
   <div class="examples">
     <h3>Examples:</h3>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes &quot;User info&quot; do %&gt;
-    &lt;%= attr.attribute :name&quot; %&gt;
-    &lt;%= attr.attribute :email %&gt;
-  &lt;% end %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes &quot;User info&quot; do %&gt;
+  &lt;%= attr.attribute :name&quot; %&gt;
+  &lt;%= attr.attribute :email %&gt;
+&lt;% end %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes &quot;User&quot;, :for =&gt; :user do |user| %&gt;
-    &lt;%= user.attribute :name %&gt;
-    &lt;%= user.attribute :email %&gt;
-    &lt;%  user.attribute :profile do %&gt;
-      &lt;%= link_to h(user.record.name), user_path(user.record) %&gt;
-    &lt;%  end %&gt;
-  &lt;% end %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes &quot;User&quot;, :for =&gt; :user do |user| %&gt;
+  &lt;%= user.attribute :name %&gt;
+  &lt;%= user.attribute :email %&gt;
+  &lt;%= user.attribute :profile do %&gt;
+    &lt;%= link_to h(user.record.name), user_path(user.record) %&gt;
+  &lt;%  end %&gt;
+&lt;% end %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes &quot;User&quot;, :for =&gt; @user do |user| %&gt;
-    &lt;%= user.attribute :name %&gt;
-    &lt;%= user.attribute :email %&gt;
-    &lt;%  user.attribute :profile do %&gt;
-      &lt;%= link_to h(@user.name), user_path(@user) %&gt;
-    &lt;%  end %&gt;
-  &lt;% end %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;% attr.attributes &quot;User&quot;, :for =&gt; @user do |user| %&gt;
+  &lt;%= user.attribute :name %&gt;
+  &lt;%= user.attribute :email %&gt;
+  &lt;%= user.attribute :profile do %&gt;
+    &lt;%= link_to h(@user.name), user_path(@user) %&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes &quot;Post&quot;, :for =&gt; :posts do |post| %&gt;
-    &lt;%= post.attribute :author %&gt;
-    &lt;%= post.attribute :title %&gt;
-  &lt;% end %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes &quot;Post&quot;, :for =&gt; :posts do |post| %&gt;
+  &lt;%= post.attribute :author %&gt;
+  &lt;%= post.attribute :title %&gt;
+&lt;% end %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes &quot;Post&quot;, :for =&gt; @posts do |post| %&gt;
-    &lt;%= post.attribute :author %&gt;
-    &lt;%= post.attribute :title %&gt;
-  &lt;% end %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes &quot;Post&quot;, :for =&gt; @posts do |post| %&gt;
+  &lt;%= post.attribute :author %&gt;
+  &lt;%= post.attribute :title %&gt;
+&lt;% end %&gt;</pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -1127,10 +1118,10 @@ attribute
       
       
         &mdash;
-        
+        <div class='inline'><p>
 Header of attributes section
-
-
+</p>
+</div>
       
     </li>
   
@@ -1144,10 +1135,10 @@ Header of attributes section
       
       
         &mdash;
-        
+        <div class='inline'><p>
 Options for formating attributes block
-
-
+</p>
+</div>
       
     </li>
   
@@ -1170,10 +1161,10 @@ Options for formating attributes block
               <tt>''</tt>
             
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Name of html class to add to attributes block
-
-
+</p>
+</div>
         </tr>
       
         <li>
@@ -1185,16 +1176,14 @@ Name of html class to add to attributes block
               <tt>''</tt>
             
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Name of html class to add to header
-
-
+</p>
+</div>
         </tr>
       
     </ul>
   
-    
-    
 <h3>Yields:</h3>
 <ul class="yield">
   
@@ -1206,10 +1195,10 @@ Name of html class to add to header
       
       
         
-        
+        <div class='inline'><p>
 Block which can call #attribute to include attribute value
-
-
+</p>
+</div>
       
     </li>
   
@@ -1219,12 +1208,18 @@ Block which can call #attribute to include attribute value
   
     <li>
       
-        <span class='type'>(<tt>retivable via #record</tt>)</span>
+        <span class='type'></span>
       
       
-        <span class='name'>builderBuilderinstanceholdingactualrecord</span>
+        <span class='name'>builder</span>
       
       
+      
+        &mdash;
+        <div class='inline'><p>
+Builder instance holding actual record (retivable via #record)
+</p>
+</div>
       
     </li>
   
@@ -1251,20 +1246,20 @@ symbols (record properties)
   <div class="examples">
     <h3>Examples:</h3>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes :name, :email %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes :name, :email %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes :name, :email, :for =&gt; :author %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes :name, :email, :for =&gt; :author %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes :name, :email, :for =&gt; @user %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes :name, :email, :for =&gt; @user %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes :title, :for =&gt; :posts %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes :title, :for =&gt; :posts %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes :title, :for =&gt; @posts %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes :title, :for =&gt; @posts %&gt;</pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -1280,10 +1275,10 @@ symbols (record properties)
       
       
         &mdash;
-        
+        <div class='inline'><p>
 List of attributes
-
-
+</p>
+</div>
       
     </li>
   
@@ -1297,10 +1292,10 @@ List of attributes
       
       
         &mdash;
-        
+        <div class='inline'><p>
 Options for formating attributes block
-
-
+</p>
+</div>
       
     </li>
   
@@ -1323,10 +1318,10 @@ Options for formating attributes block
               <tt>nil</tt>
             
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Optional header of attributes section
-
-
+</p>
+</div>
         </tr>
       
         <li>
@@ -1338,10 +1333,10 @@ Optional header of attributes section
               <tt>''</tt>
             
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Name of html class to add to attributes block
-
-
+</p>
+</div>
         </tr>
       
         <li>
@@ -1353,10 +1348,10 @@ Name of html class to add to attributes block
               <tt>''</tt>
             
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Name of html class to add to header
-
-
+</p>
+</div>
         </tr>
       
     </ul>
@@ -1383,20 +1378,20 @@ symbols (record properties)
   <div class="examples">
     <h3>Examples:</h3>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes &quot;User info&quot; :name, :email %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes &quot;User info&quot; :name, :email %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes &quot;Author&quot;, :name, :email, :for =&gt; :author %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes &quot;Author&quot;, :name, :email, :for =&gt; :author %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes &quot;Author&quot;, :name, :email, :for =&gt; @user %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes &quot;Author&quot;, :name, :email, :for =&gt; @user %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes &quot;Post&quot;, :title, :for =&gt; :posts %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes &quot;Post&quot;, :title, :for =&gt; :posts %&gt;</pre>
     
-      <h4></h4>
-      <pre class="example code">  &lt;% attr.attributes &quot;Post&quot;, :title, :for =&gt; @posts %&gt;</pre>
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes &quot;Post&quot;, :title, :for =&gt; @posts %&gt;</pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -1412,10 +1407,10 @@ symbols (record properties)
       
       
         &mdash;
-        
+        <div class='inline'><p>
 Header of attributes section
-
-
+</p>
+</div>
       
     </li>
   
@@ -1429,10 +1424,10 @@ Header of attributes section
       
       
         &mdash;
-        
+        <div class='inline'><p>
 Optional list of attributes
-
-
+</p>
+</div>
       
     </li>
   
@@ -1446,10 +1441,10 @@ Optional list of attributes
       
       
         &mdash;
-        
+        <div class='inline'><p>
 Options for formating attributes block
-
-
+</p>
+</div>
       
     </li>
   
@@ -1474,10 +1469,10 @@ Options for formating attributes block
               <tt>''</tt>
             
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Name of html class to add to attributes block
-
-
+</p>
+</div>
         </tr>
       
         <li>
@@ -1489,10 +1484,10 @@ Name of html class to add to attributes block
               <tt>''</tt>
             
           </span>
-          &mdash;
+          &mdash; <div class='inline'><p>
 Name of html class to add to header
-
-
+</p>
+</div>
         </tr>
       
     </ul>
@@ -1506,7 +1501,7 @@ Name of html class to add to header
   <h3>See Also:</h3>
   <ul class="see">
     
-      <li><a href="#attribute-instance_method" title="Attrtastic::SemanticAttributesBuilder#attribute (method)">#attribute</a></li>
+      <li><span class='object_link'><a href="#attribute-instance_method" title="Attrtastic::SemanticAttributesBuilder#attribute (method)">#attribute</a></span></li>
     
   </ul>
 
@@ -1516,6 +1511,11 @@ Name of html class to add to header
       <pre class="lines">
 
 
+174
+175
+176
+177
+178
 179
 180
 181
@@ -1536,23 +1536,13 @@ Name of html class to add to header
 196
 197
 198
-199
-200
-201
-202
-203
-204
-205</pre>
+199</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/attrtastic.rb', line 179</span>
+      <pre class="code"><span class="info file"># File 'lib/attrtastic/semantic_attributes_builder.rb', line 174</span>
 
 <span class='kw'>def</span> <span class='id attributes'>attributes</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-  <span class='kw'>if</span> <span class='id args'>args</span><span class='period'>.</span><span class='id last'>last</span> <span class='kw'>and</span> <span class='id args'>args</span><span class='period'>.</span><span class='id last'>last</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span> <span class='const'>Hash</span>
-    <span class='id options'>options</span> <span class='op'>=</span> <span class='id args'>args</span><span class='period'>.</span><span class='id last'>last</span>
-    <span class='id args'>args</span> <span class='op'>=</span> <span class='id args'>args</span><span class='lbracket'>[</span><span class='int'>0</span> <span class='op'>..</span> <span class='op'>-</span><span class='int'>2</span><span class='rbracket'>]</span>
-  <span class='kw'>end</span>
+  <span class='id options'>options</span> <span class='op'>=</span> <span class='id args'>args</span><span class='period'>.</span><span class='id extract_options!'>extract_options!</span>
   <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:html</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
 
   <span class='kw'>if</span> <span class='id args'>args</span><span class='period'>.</span><span class='id first'>first</span> <span class='kw'>and</span> <span class='id args'>args</span><span class='period'>.</span><span class='id first'>first</span><span class='period'>.</span><span class='id is_a?'>is_a?</span> <span class='const'>String</span>
@@ -1562,15 +1552,18 @@ Name of html class to add to header
   <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:for</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id blank?'>blank?</span>
     <span class='id attributes_for'>attributes_for</span><span class='lparen'>(</span><span class='id record'>record</span><span class='comma'>,</span> <span class='id args'>args</span><span class='comma'>,</span> <span class='id options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
-    <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:for</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id is_a?'>is_a?</span> <span class='const'>Symbol</span>
-      <span class='id for_value'>for_value</span> <span class='op'>=</span> <span class='id record'>record</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:for</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id for_value'>for_value</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:for</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id is_a?'>is_a?</span> <span class='const'>Symbol</span>
+      <span class='id record'>record</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:for</span><span class='rbracket'>]</span><span class='rparen'>)</span>
     <span class='kw'>else</span>
-      <span class='id for_value'>for_value</span> <span class='op'>=</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:for</span><span class='rbracket'>]</span>
+      <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:for</span><span class='rbracket'>]</span>
     <span class='kw'>end</span>
 
-    <span class='lbracket'>[</span><span class='op'>*</span><span class='id for_value'>for_value</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id value'>value</span><span class='op'>|</span>
+    <span class='lbracket'>[</span><span class='op'>*</span><span class='id for_value'>for_value</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id value'>value</span><span class='op'>|</span>
+      <span class='id value_options'>value_options</span> <span class='op'>=</span> <span class='id options'>options</span><span class='period'>.</span><span class='id clone'>clone</span>
+      <span class='id value_options'>value_options</span><span class='lbracket'>[</span><span class='symbol'>:html</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:class</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:html</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:class</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id value'>value</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id underscore'>underscore</span> <span class='rbracket'>]</span><span class='period'>.</span><span class='id compact'>compact</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
       <span class='id attributes_for'>attributes_for</span><span class='lparen'>(</span><span class='id value'>value</span><span class='comma'>,</span> <span class='id args'>args</span><span class='comma'>,</span> <span class='id options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-    <span class='kw'>end</span>
+    <span class='kw'>end</span><span class='period'>.</span><span class='id join'>join</span>
   <span class='kw'>end</span>
 
 <span class='kw'>end</span></pre>
@@ -1584,9 +1577,9 @@ Name of html class to add to header
 </div>
     
     <div id="footer">
-  Generated on Fri Jan 15 21:15:12 2010 by 
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.3 (ruby-1.9.1).
+  Generated on Fri Dec  3 21:43:44 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.3 (ruby-1.9.2).
 </div>
 
   </body>

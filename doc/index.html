@@ -2,8 +2,8 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=UTF-8" />
-<title>Documentation by YARD 0.5.3</title>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Documentation by YARD 0.6.3</title>
 <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
 
@@ -43,9 +43,12 @@
     
     <div id="content"><div id='filecontents'><h1>Attrtastic</h1>
 
-<p>Attrtastic, in its assumtion, should be similar in usage to formtastic and
-ease of displaying AR record informations (attributes). It should help
-scafforld show/index pages.</p>
+<p>Attrtastic is simple view helper which can be used to create index/show pages
+for any objects (for example Active Model objects). It helps you display
+all present attributes of object.</p>
+
+<p>If you need compatibility with Rails 2.x, then please install version 0.2.2 of
+this gem.</p>
 
 <h2>Using</h2>
 
@@ -54,22 +57,22 @@ scafforld show/index pages.</p>
 <pre class="code"><span class='id gem'>gem</span> <span class='id install'>install</span> <span class='id attrtastic'>attrtastic</span>
 </pre>
 
-<p>Add to <code>config.rb</code> as dependency:</p>
+<p>Add to your <code>Gemfile</code>:</p>
 
-<pre class="code"><span class='id config'>config</span><span class='period'>.</span><span class='id gem'>gem</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>attrtastic</span><span class='tstring_end'>'</span></span>
+<pre class="code"><span class='id gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>attrtastic</span><span class='tstring_end'>&quot;</span></span>
 </pre>
 
 <p>And use in your views, for example in user/show.erb</p>
 
-<pre class="code">&lt;% semantic_attributes_for @user do |attr| %&gt;
-  &lt;% attr.attributes &quot;User&quot; do %&gt;
+<pre class="code">&lt;%= semantic_attributes_for @user do |attr| %&gt;
+  &lt;%= attr.attributes &quot;User&quot; do %&gt;
     &lt;%= attr.attribute :first_name %&gt;
     &lt;%= attr.attribute :last_name %&gt;
-    &lt;%  attr.attribute :avatar do %&gt;
+    &lt;%= attr.attribute :avatar do %&gt;
       &lt;%= image_tag @user.avatar.url %&gt;
-    &lt;%  end %&gt;
+    &lt;% end %&gt;
   &lt;% end %&gt;
-  &lt;% attr.attributes &quot;Contact&quot; do %&gt;
+  &lt;%= attr.attributes &quot;Contact&quot; do %&gt;
     &lt;%= attr.attribute :email %&gt;
     &lt;%= attr.attribute :tel %&gt;
     &lt;%= attr.attribute :fax %&gt;
@@ -77,8 +80,8 @@ scafforld show/index pages.</p>
 &lt;% end %&gt;
 </pre>
 
-<p>By default attributes which returns #blank? value are ommited, unless
-<code>:display_blank =&gt; true</code> is added to #attribute.</p>
+<p>By default attributes which returns <code>#blank?</code> value are ommited, unless
+<code>:display_blank =&gt; true</code> is added to <code>#attribute</code>.</p>
 
 <h2>Note on Patches/Pull Requests</h2>
 
@@ -95,12 +98,12 @@ future version unintentionally.</li>
 
 <h2>Copyright</h2>
 
-<p>Copyright (c) 2009 Boruta Miroslaw. See LICENSE for details.</p></div></div>
+<p>Copyright (c) 2009-2010 Boruta Miroslaw. See LICENSE for details.</p></div></div>
     
     <div id="footer">
-  Generated on Fri Jan 15 21:15:12 2010 by 
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.3 (ruby-1.9.1).
+  Generated on Fri Dec  3 21:43:44 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.3 (ruby-1.9.2).
 </div>
 
   </body>
