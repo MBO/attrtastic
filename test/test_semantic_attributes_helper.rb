@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestSemanticAttributesHelper < Test::Unit::TestCase
+class TestSemanticAttributesHelper < TestCase
 
   context "semantic_attributes_helper" do
 
@@ -13,20 +13,18 @@ class TestSemanticAttributesHelper < Test::Unit::TestCase
         <div class="attrtastic user">
         </div>
       EOHTML
+      actual = @template.semantic_attributes_for(@user)
 
-      @template.semantic_attributes_for(@user)
-      actual = @template.output_buffer.to_s
       assert_equal expected, actual
 
-      @template.output_buffer.clear
+      #@template.output_buffer.clear
 
       expected = html <<-EOHTML
         <div class="attrtastic blog">
         </div>
       EOHTML
+      actual = @template.semantic_attributes_for(@blog)
 
-      @template.semantic_attributes_for(@blog)
-      actual = @template.output_buffer.to_s
       assert_equal expected, actual
     end
 
@@ -44,9 +42,8 @@ class TestSemanticAttributesHelper < Test::Unit::TestCase
         <div class="attrtastic user simple show">
         </div>
       EOHTML
+      actual = @template.semantic_attributes_for(@user, :html => {:class => 'simple show'})
 
-      @template.semantic_attributes_for(@user, :html => {:class => 'simple show'})
-      actual = @template.output_buffer.to_s
       assert_equal expected, actual
     end
 

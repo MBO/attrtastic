@@ -1,8 +1,11 @@
 # Attrtastic
 
-Attrtastic, in its assumtion, should be similar in usage to formtastic and
-ease of displaying AR record informations (attributes). It should help
-scafforld show/index pages.
+Attrtastic is simple view helper which can be used to create index/show pages
+for any objects (for example Active Model objects). It helps you display
+all present attributes of object.
+
+If you need compatibility with Rails 2.x, then please install version 0.2.2 of
+this gem.
 
 ## Using
 
@@ -10,29 +13,29 @@ Install the gem:
 
     gem install attrtastic
 
-Add to `config.rb` as dependency:
+Add to your `Gemfile`:
 
-    config.gem 'attrtastic'
+    gem "attrtastic"
 
 And use in your views, for example in user/show.erb
 
-    <% semantic_attributes_for @user do |attr| %>
-      <% attr.attributes "User" do %>
+    <%= semantic_attributes_for @user do |attr| %>
+      <%= attr.attributes "User" do %>
         <%= attr.attribute :first_name %>
         <%= attr.attribute :last_name %>
-        <%  attr.attribute :avatar do %>
+        <%= attr.attribute :avatar do %>
           <%= image_tag @user.avatar.url %>
-        <%  end %>
+        <% end %>
       <% end %>
-      <% attr.attributes "Contact" do %>
+      <%= attr.attributes "Contact" do %>
         <%= attr.attribute :email %>
         <%= attr.attribute :tel %>
         <%= attr.attribute :fax %>
       <% end %>
     <% end %>
 
-By default attributes which returns #blank? value are ommited, unless
-`:display_blank => true` is added to #attribute.
+By default attributes which returns `#blank?` value are ommited, unless
+`:display_blank => true` is added to `#attribute`.
 
 ## Note on Patches/Pull Requests
  
@@ -46,4 +49,4 @@ By default attributes which returns #blank? value are ommited, unless
 
 ## Copyright
 
-Copyright (c) 2009 Boruta Miroslaw. See LICENSE for details.
+Copyright (c) 2009-2010 Boruta Miroslaw. See LICENSE for details.

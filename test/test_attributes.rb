@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestAttributes < Test::Unit::TestCase
+class TestAttributes < TestCase
 
   context "attributes" do
 
@@ -22,9 +22,7 @@ class TestAttributes < Test::Unit::TestCase
         <div class="attributes">
         </div>
       EOHTML
-
-      @user_builder.attributes
-      actual = @template.output_buffer.to_s
+      actual = @user_builder.attributes
 
       assert_equal expected, actual
     end
@@ -36,9 +34,7 @@ class TestAttributes < Test::Unit::TestCase
           </ol>
         </div>
       EOHTML
-
-      @user_builder.attributes do end
-      actual = @template.output_buffer.to_s
+      actual = @user_builder.attributes do end
 
       assert_equal expected, actual
     end
@@ -51,14 +47,13 @@ class TestAttributes < Test::Unit::TestCase
           </ol>
         </div>
       EOHTML
+      actual = @user_builder.attributes "Legend" do end
 
-      @user_builder.attributes "Legend" do end
-      actual = @template.output_buffer.to_s
       assert_equal expected, actual
 
-      @template.output_buffer.clear
-      @user_builder.attributes :name => "Legend" do end
-      actual = @template.output_buffer.to_s
+      #@template.output_buffer.clear
+      actual = @user_builder.attributes :name => "Legend" do end
+
       assert_equal expected, actual
     end
 
@@ -79,9 +74,8 @@ class TestAttributes < Test::Unit::TestCase
             </ol>
           </div>
         EOHTML
+        actual = @user_builder.attributes :full_name, :email
 
-        @user_builder.attributes :full_name, :email
-        actual = @template.output_buffer.to_s
         assert_equal expected, actual
       end
 
@@ -105,9 +99,8 @@ class TestAttributes < Test::Unit::TestCase
             </ol>
           </div>
         EOHTML
+        actual = @user_builder.attributes "Contact", :full_name, :title, :email, :html => {:class => "contact"}, :display_empty => true
 
-        @user_builder.attributes "Contact", :full_name, :title, :email, :html => {:class => "contact"}, :display_empty => true
-        actual = @template.output_buffer.to_s
         assert_equal expected, actual
       end
 
@@ -136,7 +129,7 @@ class TestAttributes < Test::Unit::TestCase
       end
 
       should "generate output for given inner object" do
-        @blog_builder.attributes :for => :author do |author|
+        actual = @blog_builder.attributes :for => :author do |author|
 
           expected = html <<-EOHTML
             <li class="attribute">
@@ -157,14 +150,10 @@ class TestAttributes < Test::Unit::TestCase
           </div>
         EOHTML
 
-        actual = @template.output_buffer
         assert_equal expected, actual
       end
 
       should "show header" do
-        @blog_builder.attributes "Author", :for => :author do |author|
-        end
-
         expected = html <<-EOHTML
           <div class="attributes user">
             <div class="legend">Author</div>
@@ -172,8 +161,9 @@ class TestAttributes < Test::Unit::TestCase
             </ol>
           </div>
         EOHTML
+        actual = @blog_builder.attributes "Author", :for => :author do |author|
+        end
 
-        actual = @template.output_buffer
         assert_equal expected, actual
       end
 
@@ -188,10 +178,8 @@ class TestAttributes < Test::Unit::TestCase
             </ol>
           </div>
         EOHTML
+        actual = @blog_builder.attributes :full_name, :for => :author
 
-        @blog_builder.attributes :full_name, :for => :author
-
-        actual = @template.output_buffer
         assert_equal expected, actual
       end
     end
@@ -207,7 +195,7 @@ class TestAttributes < Test::Unit::TestCase
       end
 
       should "generate output for given inner object" do
-        @blog_builder.attributes :for => @user do |author|
+        actual = @blog_builder.attributes :for => @user do |author|
 
           expected = html <<-EOHTML
             <li class="attribute">
@@ -228,12 +216,11 @@ class TestAttributes < Test::Unit::TestCase
           </div>
         EOHTML
 
-        actual = @template.output_buffer
         assert_equal expected, actual
       end
 
       should "show header" do
-        @blog_builder.attributes "Author", :for => @user do |author|
+        actual = @blog_builder.attributes "Author", :for => @user do |author|
         end
 
         expected = html <<-EOHTML
@@ -244,7 +231,6 @@ class TestAttributes < Test::Unit::TestCase
           </div>
         EOHTML
 
-        actual = @template.output_buffer
         assert_equal expected, actual
       end
 
@@ -259,10 +245,8 @@ class TestAttributes < Test::Unit::TestCase
             </ol>
           </div>
         EOHTML
+        actual = @user_builder.attributes :full_name, :for => @user
 
-        @blog_builder.attributes :full_name, :for => @user
-
-        actual = @template.output_buffer
         assert_equal expected, actual
       end
     end
@@ -282,9 +266,6 @@ class TestAttributes < Test::Unit::TestCase
       end
 
       should "generate output for given objects" do
-        @blog_builder.attributes :for => :posts do |post|
-        end
-
         expected = html <<-EOHTML
           <div class="attributes post">
             <ol>
@@ -295,15 +276,13 @@ class TestAttributes < Test::Unit::TestCase
             </ol>
           </div>
         EOHTML
+        actual = @blog_builder.attributes :for => :posts do |post|
+        end
 
-        actual = @template.output_buffer
         assert_equal expected, actual
       end
 
       should "show header" do
-        @blog_builder.attributes "Post", :for => :posts do |post|
-        end
-
         expected = html <<-EOHTML
           <div class="attributes post">
             <div class="legend">Post</div>
@@ -316,8 +295,9 @@ class TestAttributes < Test::Unit::TestCase
             </ol>
           </div>
         EOHTML
+        actual = @blog_builder.attributes "Post", :for => :posts do |post|
+        end
 
-        actual = @template.output_buffer
         assert_equal expected, actual
       end
 
@@ -340,10 +320,8 @@ class TestAttributes < Test::Unit::TestCase
             </ol>
           </div>
         EOHTML
+        actual = @blog_builder.attributes :title, :for => :posts
 
-        @blog_builder.attributes :title, :for => :posts
-
-        actual = @template.output_buffer
         assert_equal expected, actual
       end
     end
@@ -363,9 +341,6 @@ class TestAttributes < Test::Unit::TestCase
       end
 
       should "generate output for given objects" do
-        @blog_builder.attributes :for => @blog.posts do |post|
-        end
-
         expected = html <<-EOHTML
           <div class="attributes post">
             <ol>
@@ -376,15 +351,13 @@ class TestAttributes < Test::Unit::TestCase
             </ol>
           </div>
         EOHTML
+        actual = @blog_builder.attributes :for => @blog.posts do |post|
+        end
 
-        actual = @template.output_buffer
         assert_equal expected, actual
       end
 
       should "show header" do
-        @blog_builder.attributes "Post", :for => @blog.posts do |post|
-        end
-
         expected = html <<-EOHTML
           <div class="attributes post">
             <div class="legend">Post</div>
@@ -397,8 +370,9 @@ class TestAttributes < Test::Unit::TestCase
             </ol>
           </div>
         EOHTML
+        actual = @blog_builder.attributes "Post", :for => @blog.posts do |post|
+        end
 
-        actual = @template.output_buffer
         assert_equal expected, actual
       end
 
@@ -421,10 +395,8 @@ class TestAttributes < Test::Unit::TestCase
             </ol>
           </div>
         EOHTML
+        actual = @blog_builder.attributes :title, :for => @blog.posts
 
-        @blog_builder.attributes :title, :for => @blog.posts
-
-        actual = @template.output_buffer
         assert_equal expected, actual
       end
     end

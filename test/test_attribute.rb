@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestAttribute < Test::Unit::TestCase
+class TestAttribute < TestCase
 
   context "attribute" do
 
@@ -113,13 +113,12 @@ class TestAttribute < Test::Unit::TestCase
         </li>
         EOHTML
 
-        @user_builder.attribute :full_name do
+        actual = @user_builder.attribute :full_name do
           @user_builder.template.output_buffer << "John Doe"
           3.times do
             @user_builder.template.output_buffer << "!"
           end
         end
-        actual = @template.output_buffer.to_s
         assert_equal expected, actual
       end
 
@@ -131,13 +130,12 @@ class TestAttribute < Test::Unit::TestCase
         </li>
         EOHTML
 
-        @user_builder.attribute :label => "Full name" do
+        actual = @user_builder.attribute :label => "Full name" do
           @user_builder.template.output_buffer << "John Doe"
           3.times do
             @user_builder.template.output_buffer << "!"
           end
         end
-        actual = @template.output_buffer.to_s
         assert_equal expected, actual
       end
 

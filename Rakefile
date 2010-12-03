@@ -1,31 +1,9 @@
-require 'rubygems'
-require 'rake'
-
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "attrtastic"
-    gem.summary = %Q{Helps display attributes of AR record}
-    gem.description = <<-EODESC
-    Attrtastic, in its assumtion, should be similar in usage to formtastic and
-    ease of displaying AR record informations (attributes). It should help
-    scafforld show/index pages.
-    EODESC
-    gem.email = "boruta.miroslaw@gmail.com"
-    gem.homepage = "http://github.com/MBO/attrtastic"
-    gem.authors = ["Boruta Miroslaw"]
-    gem.add_development_dependency "yard", ">= 0"
-    gem.add_development_dependency "shoulda", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-  end
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
-end
+require "bundler"
+Bundler::GemHelper.install_tasks
 
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
+  test.libs << 'test'
   test.pattern = 'test/**/test_*.rb'
   test.verbose = true
 end
@@ -39,19 +17,11 @@ begin
   end
 rescue LoadError
   task :rcov do
-    abort "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov"
+    abort "RCov is not available. In order to run rcov, you must: sudo install rcov"
   end
 end
 
-task :test => :check_dependencies
+require 'yard'
+YARD::Rake::YardocTask.new
 
 task :default => :test
-
-begin
-  require 'yard'
-  YARD::Rake::YardocTask.new
-rescue LoadError
-  task :yardoc do
-    abort "YARD is not available. In order to run yardoc, you must: sudo gem install yard"
-  end
-end

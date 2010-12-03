@@ -1,2 +1,1 @@
-require File.join(File.dirname(__FILE__), *%w[.. lib attrtastic])
-ActionView::Base.send :include, Attrtastic::SemanticAttributesHelper
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "init"))

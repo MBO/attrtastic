@@ -6,7 +6,7 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'attrtastic'
 
-class Test::Unit::TestCase
+class TestCase < Test::Unit::TestCase
   def html(string)
     string.split(/\n/m).map(&:strip).join
   end
@@ -22,7 +22,7 @@ class Test::Unit::TestCase
     ]
 
     ActionView::Base.send :include, Attrtastic::SemanticAttributesHelper
-    @template = ActionView::Base.new.tap{ |av| av.output_buffer = "" }
+    @template = ActionView::Base.new.tap{ |av| av.output_buffer = ActiveSupport::SafeBuffer.new }
     @user_builder = Attrtastic::SemanticAttributesBuilder.new(@user, @template)
     @blog_builder = Attrtastic::SemanticAttributesBuilder.new(@blog, @template)
   end

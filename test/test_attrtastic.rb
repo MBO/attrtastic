@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestAttrtastic < Test::Unit::TestCase
+class TestAttrtastic < TestCase
 
   context "Attrtastic" do
 
@@ -37,18 +37,17 @@ class TestAttrtastic < Test::Unit::TestCase
         </div>
       EOHTML
 
-      @template.semantic_attributes_for(@user) do |attr|
-        attr.attributes "User" do
+      actual = @template.semantic_attributes_for(@user) do |attr|
+        @template.output_buffer << attr.attributes("User") do
           @template.output_buffer << (attr.attribute :first_name, :html => {:class => :strong}).to_s
           @template.output_buffer << (attr.attribute :last_name).to_s
           @template.output_buffer << (attr.attribute :title).to_s
         end
-        attr.attributes :name => "Contact" do
+        @template.output_buffer << attr.attributes(:name => "Contact") do
           @template.output_buffer << (attr.attribute :email).to_s
         end
       end
 
-      actual = @template.output_buffer.to_s
       assert_equal expected, actual
     end
 
@@ -81,10 +80,12 @@ class TestAttrtastic < Test::Unit::TestCase
         </div>
       EOHTML
 
-      @template.semantic_attributes_for(@user) do |attr|
-        attr.attributes "User", :first_name, :last_name, :title
-        attr.attributes "Contact", :email
+      actual = @template.semantic_attributes_for(@user) do |attr|
+        @template.output_buffer << attr.attributes("User", :first_name, :last_name, :title)
+        @template.output_buffer << attr.attributes("Contact", :email)
       end
+
+      assert_equal expected, actual
     end
 
   end
