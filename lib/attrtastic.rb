@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 require "attrtastic/semantic_attributes_helper"
 require "attrtastic/semantic_attributes_builder"
 ##
