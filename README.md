@@ -35,10 +35,10 @@ And use in your views, for example in user/show.erb
     <% end %>
 
 By default attributes which returns `#blank?` value are ommited, unless
-`:display_blank => true` is added to `#attribute`.
+`:display_empty => true` is added to `#attribute`.
 
 ## Note on Patches/Pull Requests
- 
+
 * Fork the project.
 * Make your feature addition or bug fix.
 * Add tests for it. This is important so I don't break it in a
