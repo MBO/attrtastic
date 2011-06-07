@@ -193,7 +193,7 @@ module Attrtastic
           value_options[:html][:class] = [ options[:html][:class], value.class.to_s.underscore ].compact.join(" ")
 
           attributes_for(value, args, options, &block)
-        end.join
+        end.join.html_safe
       end
 
     end
