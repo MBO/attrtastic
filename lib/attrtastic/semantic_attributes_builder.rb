@@ -296,7 +296,9 @@ module Attrtastic
       header = options[:name]
 
       if header.present?
-        output << template.content_tag(:div, header, :class => html_header_class)
+        output << template.content_tag(:div, :class => html_header_class) do
+          template.content_tag(:span, header)
+        end
       end
 
       if block_given?
