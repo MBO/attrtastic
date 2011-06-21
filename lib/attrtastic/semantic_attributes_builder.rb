@@ -64,6 +64,16 @@ module Attrtastic
     #       <%= post.attribute :title %>
     #     <% end %>
     #
+    #   @example
+    #     <%= attr.attributes :for => @posts do |post| %>
+    #       <%= post.attribute :birthday, :format => false %>
+    #     <% end %>
+    #
+    #   @example
+    #     <%= attr.attributes :for => @posts do |post| %>
+    #       <%= post.attribute :birthday, :format => :my_fancy_birthday_formatter %>
+    #     <% end %>
+    #
     # @overload attributes(header, options = {}, &block)
     #   Creates attributes list with header and yields block to include each attribute
     #
@@ -267,6 +277,15 @@ module Attrtastic
       unless block_given?
         value = options.key?(:value) ? options[:value] : value_of_attribute(method)
 
+        value = case options[:format]
+          when false
+            value
+          when nil
+            format_attribute_value(value)
+          else
+            template.send(options[:format], value)
+        end
+
         if value.present? or options[:display_empty]
           output = template.tag(:li, {:class => html_class}, true)
           output << template.content_tag(:span, label, :class => html_label_class)
@@ -323,11 +342,20 @@ module Attrtastic
     end
 
     def value_of_attribute(method)
-      value = record.send(method)
-      value_methods = [ :to_label, :display_name, :full_name, :name, :title, :username, :login, :value ]
-      value_method = value_methods.find { |m| value.respond_to?(m) } || :to_s
-      value.send(value_method)
+      record.send(method)
     end
 
+    def format_attribute_value(value)
+      case value
+        when Date, Time, DateTime
+          template.send(:l, value)
+        when Integer
+          template.send(:number_with_delimiter, value)
+        when Float, BigDecimal
+          template.send(:number_with_precision, value)
+        else
+          value.to_s
+      end
+    end
   end
 end
