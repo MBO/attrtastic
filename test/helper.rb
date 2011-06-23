@@ -27,6 +27,7 @@ class TestCase < Test::Unit::TestCase
       Post.new.tap{|p| p.title,p.content = "Hello World!","Hello World!\nInitial post"},
       Post.new.tap{|p| p.title,p.content = "Sorry","Sorry for long delay. Had much stuff on my head..."},
     ]
+    @user.blog = @blog
 
     ActionView::Base.send :include, Attrtastic::SemanticAttributesHelper
     @template = ActionView::Base.new.tap{ |av| av.output_buffer = ActiveSupport::SafeBuffer.new }
@@ -36,7 +37,14 @@ class TestCase < Test::Unit::TestCase
 end
 
 class User
-  attr_accessor :first_name, :last_name, :email, :title, :created_at, :time, :birthday, :float, :decimal, :integer
+  attr_accessor :first_name, :last_name, :email, :title, :created_at, :time, :birthday, :float, :decimal, :integer, :blog
+
+  def address
+    {
+      :street => "Hellway 13",
+      :city => "New York",
+    }
+  end
 
   def full_name
     [last_name,first_name].join(", ")

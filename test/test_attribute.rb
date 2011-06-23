@@ -235,6 +235,30 @@ class TestAttribute < TestCase
       assert_equal expected, actual
     end
 
+    should "use th custome value as hash key if it's a symbol and the attribute is a hash" do
+      expected = html <<-EOHTML
+        <li class="attribute">
+        <span class="label">Address</span>
+          <span class="value">Hellway 13</span>
+        </li>
+      EOHTML
+
+      actual = @user_builder.attribute(:address, :value => :street)
+      assert_equal expected, actual
+    end
+
+    should "use th custome value as a method it's a symbol and the attribute is not a hash" do
+      expected = html <<-EOHTML
+        <li class="attribute">
+        <span class="label">Blog</span>
+          <span class="value">IT Pro Blog</span>
+        </li>
+      EOHTML
+
+      actual = @user_builder.attribute(:blog, :value => :name)
+      assert_equal expected, actual
+    end
+
     should "work with custom value blank" do
       assert_nil @user_builder.attribute(:full_name, :value => nil)
       assert_nil @user_builder.attribute(:full_name, :value => "")
