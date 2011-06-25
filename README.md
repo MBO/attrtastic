@@ -49,4 +49,4 @@ By default attributes which returns `#blank?` value are ommited, unless
 
 ## Copyright
 
-Copyright (c) 2009-2010 Boruta Miroslaw. See LICENSE for details.
+Copyright (c) 2009-2011 Boruta Mirosław. See LICENSE for details.

@@ -221,8 +221,14 @@ module Attrtastic
     #   @param [Hash] options Options
     #   @option options [Hash] :html ({}) Hash with optional :class, :label_class and :value_class names of class for html
     #   @option options [String] :label Label for attribute entry, overrides default label name from symbol
-    #   @option options [String] :value Value of attribute entry, overrides default value from record. If it's a symbol it's used a the hash key or method depending on the type of the attribute.
+    #   @option options [Symbol,Object] :value If it's Symbol, then it's used as either name of hash key to use on attribute
+    #           (if it's hash) or method name to call on attribute. Otherwise it's used as value to use instead of
+    #           actual attribute's.
     #   @option options [Boolean] :display_empty (false) Indicates if print value of given attribute even if it is blank?
+    #   @option options [Symbol,false,nil] :format (nil) Type of formatter to use to display attribute's value. If it's false,
+    #           then don't format at all (just call #to_s). If it's nil, then use default formatting (#l for dates,
+    #           #number_with_precision/#number_with_delimiter for floats/integers). If it's Symbol, then use it to select
+    #           view helper method and pass aattribute's value to it to format.
     #
     #   @example
     #     <%= attr.attribute :name %>
@@ -235,6 +241,9 @@ module Attrtastic
     #
     #   @example
     #     <%= attr.attribute :address, :value => :street %>
+    #
+    #   @example
+    #     <%= attr.attribute :avatar, :value => :url, :format => :image_tag %>
     #
     # @overload attribute(method, options = {}, &block)
     #   Creates entry for attribute given with block
