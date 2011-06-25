@@ -2,17 +2,27 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
-<title>Class: Attrtastic::SemanticAttributesBuilder</title>
-<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
-<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Attrtastic::SemanticAttributesBuilder
+  
+    &mdash; Documentation by YARD 0.7.2
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
   relpath = '..';
   if (relpath != '') relpath += '/';
 </script>
-<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
 
   </head>
   <body>
@@ -33,11 +43,14 @@
 </div>
 
       <div id="search">
-  <a id="class_list_link" href="#">Class List</a>
-  <a id="method_list_link" href="#">Method List</a>
-  <a id ="file_list_link" href="#">File List</a>
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
 </div>
-
       <div class="clear"></div>
     </div>
     
@@ -91,6 +104,8 @@
     
 
     
+      (also: #object)
+    
   </span>
   
   
@@ -139,6 +154,8 @@ Only for testing purposes.
 
     
   </ul>
+
+
 
 
   
@@ -253,12 +270,12 @@ A new instance of SemanticAttributesBuilder
       <pre class="lines">
 
 
-9
-10
-11</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/attrtastic/semantic_attributes_builder.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'lib/attrtastic/semantic_attributes_builder.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id record'>record</span><span class='comma'>,</span> <span class='id template'>template</span><span class='rparen'>)</span>
   <span class='ivar'>@record</span><span class='comma'>,</span> <span class='ivar'>@template</span> <span class='op'>=</span> <span class='id record'>record</span><span class='comma'>,</span> <span class='id template'>template</span>
@@ -282,6 +299,10 @@ A new instance of SemanticAttributesBuilder
     - (<tt>Object</tt>) <strong>record</strong>  <span class="extras">(readonly)</span>
   
 
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='object-instance_method'>object</span></span>
+    </span>
   
 </p><div class="docstring">
   <div class="discussion">
@@ -429,16 +450,22 @@ Creates entry for record attribute
       <h4><div class='inline'></div></h4>
       <pre class="example code">&lt;%= attr.attribute :name, :value =&gt; @user.full_name %&gt;</pre>
     
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attribute :address, :value =&gt; :street %&gt;</pre>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attribute :avatar, :value =&gt; :url, :format =&gt; :image_tag %&gt;</pre>
+    
   </div>
 <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
       
-        <span class='type'>(<tt>Symbol</tt>)</span>
-      
-      
         <span class='name'>method</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
       
       
       
@@ -452,10 +479,10 @@ Attribute name of given record
   
     <li>
       
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
         <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
       
       
       
@@ -478,8 +505,8 @@ Options
     <ul class="option">
       
         <li>
-          <span class="type">(<tt>Hash</tt>)</span>
           <span class="name">:html</span>
+          <span class="type">(<tt>Hash</tt>)</span>
           <span class="default">
             
               &mdash; default:
@@ -494,8 +521,8 @@ html
         </tr>
       
         <li>
-          <span class="type">(<tt>String</tt>)</span>
           <span class="name">:label</span>
+          <span class="type">(<tt>String</tt>)</span>
           <span class="default">
             
           </span>
@@ -506,20 +533,23 @@ Label for attribute entry, overrides default label name from symbol
         </tr>
       
         <li>
-          <span class="type">(<tt>String</tt>)</span>
           <span class="name">:value</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>Object</tt>)</span>
           <span class="default">
             
           </span>
           &mdash; <div class='inline'><p>
-Value of attribute entry, overrides default value from record
+If it&#8217;s Symbol, then it&#8217;s used as either name of hash key to
+use on attribute (if it&#8217;s hash) or method name to call on attribute.
+Otherwise it&#8217;s used as value to use instead of actual
+attribute&#8217;s.
 </p>
 </div>
         </tr>
       
         <li>
-          <span class="type">(<tt>Boolean</tt>)</span>
           <span class="name">:display_empty</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
           <span class="default">
             
               &mdash; default:
@@ -528,6 +558,26 @@ Value of attribute entry, overrides default value from record
           </span>
           &mdash; <div class='inline'><p>
 Indicates if print value of given attribute even if it is blank?
+</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:format</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>false</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>nil</tt>
+            
+          </span>
+          &mdash; <div class='inline'><p>
+Type of formatter to use to display attribute&#8217;s value. If it&#8217;s
+false, then don&#8217;t format at all (just call #to_s). If it&#8217;s nil,
+then use default formatting (#l for dates,
+#number_with_precision/#number_with_delimiter for floats/integers). If
+it&#8217;s Symbol, then use it to select view helper method and pass
+aattribute&#8217;s value to it to format.
 </p>
 </div>
         </tr>
@@ -565,10 +615,10 @@ Creates entry for attribute given with block
   
     <li>
       
-        <span class='type'>(<tt>Symbol</tt>)</span>
-      
-      
         <span class='name'>method</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
       
       
       
@@ -582,10 +632,10 @@ Attribute name of given record
   
     <li>
       
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
         <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
       
       
       
@@ -608,8 +658,8 @@ Options
     <ul class="option">
       
         <li>
-          <span class="type">(<tt>Hash</tt>)</span>
           <span class="name">:html</span>
+          <span class="type">(<tt>Hash</tt>)</span>
           <span class="default">
             
               &mdash; default:
@@ -624,8 +674,8 @@ for html
         </tr>
       
         <li>
-          <span class="type">(<tt>String</tt>)</span>
           <span class="name">:label</span>
+          <span class="type">(<tt>String</tt>)</span>
           <span class="default">
             
           </span>
@@ -642,8 +692,8 @@ Label for attribute entry, overrides default label name from symbol
   
     <li>
       
-        <span class='type'></span>
       
+        <span class='type'></span>
       
       
       
@@ -688,10 +738,10 @@ in this case.
   
     <li>
       
-        <span class='type'>(<tt>:Hash</tt>)</span>
-      
-      
         <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>:Hash</tt>)</span>
       
       
       
@@ -712,8 +762,8 @@ Options
     <ul class="option">
       
         <li>
-          <span class="type">(<tt>Hash</tt>)</span>
           <span class="name">:html</span>
+          <span class="type">(<tt>Hash</tt>)</span>
           <span class="default">
             
               &mdash; default:
@@ -728,8 +778,8 @@ for html
         </tr>
       
         <li>
-          <span class="type">(<tt>String</tt>)</span>
           <span class="name">:label</span>
+          <span class="type">(<tt>String</tt>)</span>
           <span class="default">
             
           </span>
@@ -746,8 +796,8 @@ Mandatory label for attribute entry
   
     <li>
       
-        <span class='type'></span>
       
+        <span class='type'></span>
       
       
       
@@ -772,39 +822,63 @@ Block which is executed in place of value for attribute
       <pre class="lines">
 
 
-255
-256
-257
-258
-259
-260
-261
-262
-263
-264
-265
-266
-267
-268
-269
-270
-271
-272
-273
-274
-275
-276
-277
-278
-279
 280
 281
 282
 283
-284</pre>
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/attrtastic/semantic_attributes_builder.rb', line 255</span>
+      <pre class="code"><span class="info file"># File 'lib/attrtastic/semantic_attributes_builder.rb', line 280</span>
 
 <span class='kw'>def</span> <span class='id attribute'>attribute</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id options'>options</span> <span class='op'>=</span> <span class='id args'>args</span><span class='period'>.</span><span class='id extract_options!'>extract_options!</span>
@@ -819,7 +893,31 @@ Block which is executed in place of value for attribute
   <span class='id label'>label</span> <span class='op'>=</span> <span class='id options'>options</span><span class='period'>.</span><span class='id key?'>key?</span><span class='lparen'>(</span><span class='symbol'>:label</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:label</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='id label_for_attribute'>label_for_attribute</span><span class='lparen'>(</span><span class='id method'>method</span><span class='rparen'>)</span>
 
   <span class='kw'>unless</span> <span class='id block_given?'>block_given?</span>
-    <span class='id value'>value</span> <span class='op'>=</span> <span class='id options'>options</span><span class='period'>.</span><span class='id key?'>key?</span><span class='lparen'>(</span><span class='symbol'>:value</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:value</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='id value_of_attribute'>value_of_attribute</span><span class='lparen'>(</span><span class='id method'>method</span><span class='rparen'>)</span>
+    <span class='id value'>value</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id options'>options</span><span class='period'>.</span><span class='id key?'>key?</span><span class='lparen'>(</span><span class='symbol'>:value</span><span class='rparen'>)</span>
+      <span class='kw'>case</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:value</span><span class='rbracket'>]</span>
+        <span class='kw'>when</span> <span class='const'>Symbol</span>
+          <span class='id attribute_value'>attribute_value</span> <span class='op'>=</span> <span class='id value_of_attribute'>value_of_attribute</span><span class='lparen'>(</span><span class='id method'>method</span><span class='rparen'>)</span>
+          <span class='kw'>case</span> <span class='id attribute_value'>attribute_value</span>
+            <span class='kw'>when</span> <span class='const'>Hash</span>
+              <span class='id attribute_value'>attribute_value</span><span class='lbracket'>[</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:value</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+            <span class='kw'>else</span>
+              <span class='id attribute_value'>attribute_value</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:value</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+          <span class='kw'>end</span>
+        <span class='kw'>else</span>
+          <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:value</span><span class='rbracket'>]</span>
+      <span class='kw'>end</span>
+    <span class='kw'>else</span>
+      <span class='id value_of_attribute'>value_of_attribute</span><span class='lparen'>(</span><span class='id method'>method</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='id value'>value</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:format</span><span class='rbracket'>]</span>
+      <span class='kw'>when</span> <span class='kw'>false</span>
+        <span class='id value'>value</span>
+      <span class='kw'>when</span> <span class='kw'>nil</span>
+        <span class='id format_attribute_value'>format_attribute_value</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
+      <span class='kw'>else</span>
+        <span class='id template'>template</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:format</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id value'>value</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
 
     <span class='kw'>if</span> <span class='id value'>value</span><span class='period'>.</span><span class='id present?'>present?</span> <span class='kw'>or</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:display_empty</span><span class='rbracket'>]</span>
       <span class='id output'>output</span> <span class='op'>=</span> <span class='id template'>template</span><span class='period'>.</span><span class='id tag'>tag</span><span class='lparen'>(</span><span class='symbol'>:li</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='id html_class'>html_class</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
@@ -951,16 +1049,26 @@ attribute
   &lt;%= post.attribute :title %&gt;
 &lt;% end %&gt;</pre>
     
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes :for =&gt; @posts do |post| %&gt;
+  &lt;%= post.attribute :birthday, :format =&gt; false %&gt;
+&lt;% end %&gt;</pre>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= attr.attributes :for =&gt; @posts do |post| %&gt;
+  &lt;%= post.attribute :birthday, :format =&gt; :my_fancy_birthday_formatter %&gt;
+&lt;% end %&gt;</pre>
+    
   </div>
 <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
       
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
         <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
       
       
       
@@ -981,8 +1089,8 @@ Options for formating attributes block
     <ul class="option">
       
         <li>
-          <span class="type">(<tt>String</tt>)</span>
           <span class="name">:name</span>
+          <span class="type">(<tt>String</tt>)</span>
           <span class="default">
             
               &mdash; default:
@@ -996,8 +1104,8 @@ Optional header of attributes section
         </tr>
       
         <li>
-          <span class="type">(<tt>String</tt>)</span>
           <span class="name">:class</span>
+          <span class="type">(<tt>String</tt>)</span>
           <span class="default">
             
               &mdash; default:
@@ -1011,8 +1119,8 @@ Name of html class to add to attributes block
         </tr>
       
         <li>
-          <span class="type">(<tt>String</tt>)</span>
           <span class="name">:header_class</span>
+          <span class="type">(<tt>String</tt>)</span>
           <span class="default">
             
               &mdash; default:
@@ -1032,8 +1140,8 @@ Name of html class to add to header
   
     <li>
       
-        <span class='type'></span>
       
+        <span class='type'></span>
       
       
       
@@ -1110,10 +1218,10 @@ attribute
   
     <li>
       
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
         <span class='name'>header</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
@@ -1127,10 +1235,10 @@ Header of attributes section
   
     <li>
       
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
         <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
       
       
       
@@ -1153,8 +1261,8 @@ Options for formating attributes block
     <ul class="option">
       
         <li>
-          <span class="type">(<tt>String</tt>)</span>
           <span class="name">:class</span>
+          <span class="type">(<tt>String</tt>)</span>
           <span class="default">
             
               &mdash; default:
@@ -1168,8 +1276,8 @@ Name of html class to add to attributes block
         </tr>
       
         <li>
-          <span class="type">(<tt>String</tt>)</span>
           <span class="name">:header_class</span>
+          <span class="type">(<tt>String</tt>)</span>
           <span class="default">
             
               &mdash; default:
@@ -1189,8 +1297,8 @@ Name of html class to add to header
   
     <li>
       
-        <span class='type'></span>
       
+        <span class='type'></span>
       
       
       
@@ -1208,10 +1316,10 @@ Block which can call #attribute to include attribute value
   
     <li>
       
-        <span class='type'></span>
-      
-      
         <span class='name'>builder</span>
+      
+      
+        <span class='type'></span>
       
       
       
@@ -1267,10 +1375,10 @@ symbols (record properties)
   
     <li>
       
-        <span class='type'>(<tt>Symbol</tt>, <tt>...</tt>)</span>
-      
-      
         <span class='name'>symbols</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>, <tt>...</tt>)</span>
       
       
       
@@ -1284,10 +1392,10 @@ List of attributes
   
     <li>
       
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
         <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
       
       
       
@@ -1310,8 +1418,8 @@ Options for formating attributes block
     <ul class="option">
       
         <li>
-          <span class="type">(<tt>String</tt>)</span>
           <span class="name">:name</span>
+          <span class="type">(<tt>String</tt>)</span>
           <span class="default">
             
               &mdash; default:
@@ -1325,8 +1433,8 @@ Optional header of attributes section
         </tr>
       
         <li>
-          <span class="type">(<tt>String</tt>)</span>
           <span class="name">:class</span>
+          <span class="type">(<tt>String</tt>)</span>
           <span class="default">
             
               &mdash; default:
@@ -1340,8 +1448,8 @@ Name of html class to add to attributes block
         </tr>
       
         <li>
-          <span class="type">(<tt>String</tt>)</span>
           <span class="name">:header_class</span>
+          <span class="type">(<tt>String</tt>)</span>
           <span class="default">
             
               &mdash; default:
@@ -1399,10 +1507,10 @@ symbols (record properties)
   
     <li>
       
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
         <span class='name'>header</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
@@ -1416,10 +1524,10 @@ Header of attributes section
   
     <li>
       
-        <span class='type'>(<tt>Symbol</tt>, <tt>...</tt>)</span>
-      
-      
         <span class='name'>symbols</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>, <tt>...</tt>)</span>
       
       
       
@@ -1433,10 +1541,10 @@ Optional list of attributes
   
     <li>
       
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
         <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
       
       
       
@@ -1461,8 +1569,8 @@ Options for formating attributes block
     <ul class="option">
       
         <li>
-          <span class="type">(<tt>String</tt>)</span>
           <span class="name">:class</span>
+          <span class="type">(<tt>String</tt>)</span>
           <span class="default">
             
               &mdash; default:
@@ -1476,8 +1584,8 @@ Name of html class to add to attributes block
         </tr>
       
         <li>
-          <span class="type">(<tt>String</tt>)</span>
           <span class="name">:header_class</span>
+          <span class="type">(<tt>String</tt>)</span>
           <span class="default">
             
               &mdash; default:
@@ -1511,19 +1619,6 @@ Name of html class to add to header
       <pre class="lines">
 
 
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
 187
 188
 189
@@ -1536,10 +1631,23 @@ Name of html class to add to header
 196
 197
 198
-199</pre>
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/attrtastic/semantic_attributes_builder.rb', line 174</span>
+      <pre class="code"><span class="info file"># File 'lib/attrtastic/semantic_attributes_builder.rb', line 187</span>
 
 <span class='kw'>def</span> <span class='id attributes'>attributes</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id options'>options</span> <span class='op'>=</span> <span class='id args'>args</span><span class='period'>.</span><span class='id extract_options!'>extract_options!</span>
@@ -1563,7 +1671,7 @@ Name of html class to add to header
       <span class='id value_options'>value_options</span><span class='lbracket'>[</span><span class='symbol'>:html</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:class</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:html</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:class</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id value'>value</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id underscore'>underscore</span> <span class='rbracket'>]</span><span class='period'>.</span><span class='id compact'>compact</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 
       <span class='id attributes_for'>attributes_for</span><span class='lparen'>(</span><span class='id value'>value</span><span class='comma'>,</span> <span class='id args'>args</span><span class='comma'>,</span> <span class='id options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-    <span class='kw'>end</span><span class='period'>.</span><span class='id join'>join</span>
+    <span class='kw'>end</span><span class='period'>.</span><span class='id join'>join</span><span class='period'>.</span><span class='id html_safe'>html_safe</span>
   <span class='kw'>end</span>
 
 <span class='kw'>end</span></pre>
@@ -1577,9 +1685,9 @@ Name of html class to add to header
 </div>
     
     <div id="footer">
-  Generated on Fri Dec  3 21:43:44 2010 by 
+  Generated on Sat Jun 25 13:32:39 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.3 (ruby-1.9.2).
+  0.7.2 (ruby-1.9.2).
 </div>
 
   </body>
