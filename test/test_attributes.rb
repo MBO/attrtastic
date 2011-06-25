@@ -124,6 +124,7 @@ class TestAttributes < TestCase
         @blog_builder.attributes :for => :author do |author|
 
           assert_equal @blog.author, author.record
+          assert_equal @blog.author, author.object
 
         end
       end
@@ -190,6 +191,7 @@ class TestAttributes < TestCase
         @blog_builder.attributes :for => @user do |author|
 
           assert_equal @user, author.record
+          assert_equal @user, author.object
 
         end
       end

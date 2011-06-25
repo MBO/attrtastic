@@ -6,6 +6,9 @@ module Attrtastic
     # Only for testing purposes
     attr_reader :record, :template
 
+    # For compatibility with formtastic
+    alias :object :record
+
     def initialize(record, template)
       @record, @template = record, template
     end
