@@ -12,7 +12,7 @@ class TestAttrtastic < TestCase
       expected = html <<-EOHTML
         <div class="attrtastic user">
           <div class="attributes">
-            <div class="legend">User</div>
+          <div class="legend"><span>User</span></div>
             <ol>
               <li class="attribute strong">
                 <span class="label">First name</span>
@@ -26,7 +26,7 @@ class TestAttrtastic < TestCase
           </div>
 
           <div class="attributes">
-            <div class="legend">Contact</div>
+            <div class="legend"><span>Contact</span></div>
             <ol>
               <li class="attribute">
                 <span class="label">Email</span>
@@ -55,7 +55,7 @@ class TestAttrtastic < TestCase
       expected = html <<-EOHTML
         <div class="attrtastic user">
           <div class="attributes">
-            <div class="legend">User</div>
+            <div class="legend"><span>User</span></div>
             <ol>
               <li class="attribute">
                 <span class="label">First name</span>
@@ -69,7 +69,7 @@ class TestAttrtastic < TestCase
           </div>
 
           <div class="attributes">
-            <div class="legend">Contact</div>
+            <div class="legend"><span>Contact</span></div>
             <ol>
               <li class="attribute">
                 <span class="label">Email</span>

@@ -42,7 +42,7 @@ class TestAttributes < TestCase
     should "show header" do
       expected = html <<-EOHTML
         <div class="attributes">
-          <div class="legend">Legend</div>
+          <div class="legend"><span>Legend</span></div>
           <ol>
           </ol>
         </div>
@@ -82,7 +82,7 @@ class TestAttributes < TestCase
       should "show header" do
         expected = html <<-EOHTML
           <div class="attributes contact">
-            <div class="legend">Contact</div>
+            <div class="legend"><span>Contact</span></div>
             <ol>
               <li class="attribute">
                 <span class="label">Full name</span>
@@ -157,7 +157,7 @@ class TestAttributes < TestCase
       should "show header" do
         expected = html <<-EOHTML
           <div class="attributes user">
-            <div class="legend">Author</div>
+            <div class="legend"><span>Author</span></div>
             <ol>
             </ol>
           </div>
@@ -227,7 +227,7 @@ class TestAttributes < TestCase
 
         expected = html <<-EOHTML
           <div class="attributes user">
-            <div class="legend">Author</div>
+            <div class="legend"><span>Author</span></div>
             <ol>
             </ol>
           </div>
@@ -287,12 +287,12 @@ class TestAttributes < TestCase
       should "show header" do
         expected = html <<-EOHTML
           <div class="attributes post">
-            <div class="legend">Post</div>
+            <div class="legend"><span>Post</span></div>
             <ol>
             </ol>
           </div>
           <div class="attributes post">
-            <div class="legend">Post</div>
+            <div class="legend"><span>Post</span></div>
             <ol>
             </ol>
           </div>
@@ -362,12 +362,12 @@ class TestAttributes < TestCase
       should "show header" do
         expected = html <<-EOHTML
           <div class="attributes post">
-            <div class="legend">Post</div>
+            <div class="legend"><span>Post</span></div>
             <ol>
             </ol>
           </div>
           <div class="attributes post">
-            <div class="legend">Post</div>
+            <div class="legend"><span>Post</span></div>
             <ol>
             </ol>
           </div>
