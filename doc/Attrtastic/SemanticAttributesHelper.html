@@ -193,6 +193,9 @@ attributes @param[Hash] options Opions
   &lt;% end %&gt;
 &lt;% end %&gt;</pre>
     
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">&lt;%= semantic_attributes_for @user %&gt;</pre>
+    
   </div>
 <h3>Parameters:</h3>
 <ul class="param">
@@ -290,9 +293,6 @@ Builder for attributes for given AR record
       <pre class="lines">
 
 
-41
-42
-43
 44
 45
 46
@@ -300,10 +300,17 @@ Builder for attributes for given AR record
 48
 49
 50
-51</pre>
+51
+52
+53
+54
+55
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/attrtastic/semantic_attributes_helper.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/attrtastic/semantic_attributes_helper.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id semantic_attributes_for'>semantic_attributes_for</span><span class='lparen'>(</span><span class='id record'>record</span><span class='comma'>,</span> <span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:html</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -313,6 +320,10 @@ Builder for attributes for given AR record
   <span class='id output'>output</span> <span class='op'>=</span> <span class='id tag'>tag</span><span class='lparen'>(</span><span class='symbol'>:div</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='id html_class'>html_class</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
     <span class='id output'>output</span> <span class='op'>&lt;&lt;</span> <span class='id capture'>capture</span><span class='lparen'>(</span><span class='const'>SemanticAttributesBuilder</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id record'>record</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id output'>output</span> <span class='op'>&lt;&lt;</span> <span class='id capture'>capture</span><span class='lparen'>(</span><span class='const'>SemanticAttributesBuilder</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id record'>record</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id attr'>attr</span><span class='op'>|</span>
+      <span class='id attr'>attr</span><span class='period'>.</span><span class='id attributes'>attributes</span>
+    <span class='kw'>end</span>
   <span class='kw'>end</span>
   <span class='id output'>output</span><span class='period'>.</span><span class='id safe_concat'>safe_concat</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/div&gt;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -326,7 +337,7 @@ Builder for attributes for given AR record
 </div>
     
     <div id="footer">
-  Generated on Sat Jun 25 13:32:39 2011 by 
+  Generated on Tue Aug 16 11:49:20 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.2 (ruby-1.9.2).
 </div>
