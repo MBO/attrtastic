@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    attrtastic (0.4.1)
+    attrtastic (0.4.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
 

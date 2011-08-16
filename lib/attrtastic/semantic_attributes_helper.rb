@@ -38,6 +38,9 @@ module Attrtastic
     #     <% end %>
     #   <% end %>
     #
+    # @example
+    #   <%= semantic_attributes_for @user %>
+    #
     def semantic_attributes_for(record, options = {}, &block)
       options[:html] ||= {}
 
@@ -46,6 +49,10 @@ module Attrtastic
       output = tag(:div, { :class => html_class}, true)
       if block_given?
         output << capture(SemanticAttributesBuilder.new(record, self), &block)
+      else
+        output << capture(SemanticAttributesBuilder.new(record, self)) do |attr|
+          attr.attributes
+        end
       end
       output.safe_concat("</div>")
     end
