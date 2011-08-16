@@ -17,12 +17,26 @@ class TestAttributes < TestCase
       assert block_run
     end
 
-    should "generate output even when no block given" do
+    should "generate output even when no block given, outputting all attributes (from #attribute_names) " do
       expected = html <<-EOHTML
         <div class="attributes">
+        <ol>
+          <li class="attribute">
+            <span class="label">Name</span>
+            <span class="value">IT Pro Blog</span>
+          </li>
+          <li class="attribute">
+            <span class="label">Url</span>
+            <span class="value">http://www.it.pro.blog</span>
+          </li>
+          <li class="attribute">
+            <span class="label">Author full name</span>
+            <span class="value">Doe, John</span>
+          </li>
+        </ol>
         </div>
       EOHTML
-      actual = @user_builder.attributes
+      actual = @blog_builder.attributes
 
       assert_equal expected, actual
     end

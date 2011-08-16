@@ -49,13 +49,25 @@ class User
   def full_name
     [last_name,first_name].join(", ")
   end
+
+  def attribute_names
+    %w( first_name last_name email title created_at time birthday float decimal integer address full_name )
+  end
 end
 
 class Blog
   attr_accessor :name, :url, :author, :posts
   delegate :full_name, :to => :author, :prefix => true
+
+  def attribute_names
+    %w( name url author_full_name )
+  end
 end
 
 class Post
   attr_accessor :title, :content
+
+  def attribute_names
+    %w( title content )
+  end
 end

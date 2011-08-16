@@ -354,7 +354,10 @@ module Attrtastic
         output << template.tag(:ol, {}, true)
         output << template.capture(new_builder, &block)
         output.safe_concat("</ol>")
-      elsif methods.present?
+      else
+        if methods.blank? && object.respond_to?(:attribute_names)
+          methods = object.attribute_names
+        end
         output << template.tag(:ol, {}, true)
         methods.each do |method|
           output << new_builder.attribute(method, options)
