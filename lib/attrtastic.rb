@@ -20,7 +20,7 @@ module Attrtastic
   attr_accessor :default_options
   self.default_options ||= {}
 
-  def reset_config
+  def reset_default_options
     self.default_options = {}
   end
 end

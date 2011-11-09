@@ -13,7 +13,7 @@ class TestCase < Test::Unit::TestCase
   end
 
   def setup
-    Attrtastic.reset_config
+    Attrtastic.reset_default_options
   end
 
   def setup_fixtures

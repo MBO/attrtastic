@@ -102,7 +102,7 @@ class TestAttrtastic < TestCase
 
       should "reset default options" do
         Attrtastic.default_options[:display_empty] = true
-        Attrtastic.reset_config
+        Attrtastic.reset_default_options
         assert_equal Hash.new, Attrtastic.default_options
 
       end
