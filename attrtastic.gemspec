@@ -21,7 +21,8 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency("yard", ["~> 0.6.0"])
   s.add_development_dependency("bluecloth", ["~>2.0.0"])
-  s.add_development_dependency("shoulda", ["~> 2.11.0"])
+  s.add_development_dependency("shoulda-context", ["~> 1.0.0"])
+  s.add_development_dependency("test-unit", ["~> 2.4.1"])
 
   s.add_dependency("activesupport", [">= 3.0"])
   s.add_dependency("actionpack", [">= 3.0"])

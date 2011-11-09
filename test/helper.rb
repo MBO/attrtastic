@@ -1,5 +1,5 @@
 require 'test/unit'
-require 'shoulda'
+require 'shoulda-context'
 require 'action_view'
 require 'bigdecimal'
 
