@@ -13,6 +13,10 @@ require File.join(File.dirname(__FILE__), *%w[attrtastic railtie]) if defined?(:
 module Attrtastic
   extend self
 
+  # Set default options for attribute such as :display_empty
+  #
+  #   @example
+  #     Attrtastic.default_options[:display_empty] = true
   attr_accessor :default_options
   self.default_options ||= {}
 
