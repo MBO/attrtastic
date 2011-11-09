@@ -72,10 +72,11 @@ class TestAttribute < TestCase
       end
 
       should "properly format a Time" do
+        time = @user.time.strftime("%a, %d %b %Y %H:%M:%S %z")
         expected = html <<-EOHTML
           <li class="attribute">
           <span class="label">Time</span>
-            <span class="value">Sat, 01 Jan 2000 06:00:00 +0100</span>
+            <span class="value">#{time}</span>
           </li>
         EOHTML
         actual = @user_builder.attribute(:time)
@@ -154,7 +155,7 @@ class TestAttribute < TestCase
         expected = html <<-EOHTML
           <li class="attribute">
           <span class="label">Time</span>
-            <span class="value">2000-01-01 06:00:00 +0100</span>
+            <span class="value">#{@user.time}</span>
           </li>
         EOHTML
         actual = @user_builder.attribute(:time, :format => false)
