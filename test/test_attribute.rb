@@ -37,6 +37,21 @@ class TestAttribute < TestCase
       assert_equal expected, actual
     end
 
+    context "with default_options" do
+      should "show attribute with default_options[:display_empty] => true" do
+        Attrtastic.default_options[:display_empty] = true
+        expected = html <<-EOHTML
+          <li class="attribute">
+            <span class="label">Title</span>
+            <span class="value"></span>
+          </li>
+        EOHTML
+
+        actual = @user_builder.attribute(:title)
+        assert_equal expected, actual
+      end
+    end
+
     context "with default formating" do
       should "properly format a String" do
         expected = html <<-EOHTML

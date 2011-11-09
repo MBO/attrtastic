@@ -11,6 +11,11 @@ class TestCase < Test::Unit::TestCase
   def html(string)
     string.split(/\n/m).map(&:strip).join
   end
+
+  def setup
+    Attrtastic.reset_config
+  end
+
   def setup_fixtures
     @user = User.new.tap do |u|
       u.first_name,u.last_name = "John","Doe"

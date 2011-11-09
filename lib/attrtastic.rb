@@ -11,5 +11,14 @@ require "attrtastic/semantic_attributes_builder"
 require File.join(File.dirname(__FILE__), *%w[attrtastic railtie]) if defined?(::Rails::Railtie)
 
 module Attrtastic
+  extend self
+
+  attr_accessor :default_options
+  self.default_options ||= {}
+
+  def reset_config
+    self.default_options = {}
+  end
+
 end
 

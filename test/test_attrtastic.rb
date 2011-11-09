@@ -88,6 +88,26 @@ class TestAttrtastic < TestCase
       assert_equal expected, actual
     end
 
+    context "Default Options" do
+      should "setup default options" do
+        assert Attrtastic.default_options.is_a?(Hash)
+      end
+
+      should "set default options" do
+        Attrtastic.default_options[:display_empty] = true
+        expected = {:display_empty => true}
+
+        assert_equal expected, Attrtastic.default_options
+      end
+
+      should "reset default options" do
+        Attrtastic.default_options[:display_empty] = true
+        Attrtastic.reset_config
+        assert_equal Hash.new, Attrtastic.default_options
+
+      end
+    end
+
   end
 
 end

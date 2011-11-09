@@ -279,6 +279,7 @@ module Attrtastic
     #
     def attribute(*args, &block)
       options = args.extract_options!
+      options.reverse_merge!(Attrtastic.default_options)
       options[:html] ||= {}
 
       method = args.shift
