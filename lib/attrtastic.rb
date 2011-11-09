@@ -23,6 +23,5 @@ module Attrtastic
   def reset_config
     self.default_options = {}
   end
-
 end
 
