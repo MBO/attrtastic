@@ -1,5 +1,5 @@
 require 'test/unit'
-require 'shoulda'
+require 'shoulda-context'
 require 'action_view'
 require 'bigdecimal'
 
@@ -11,6 +11,11 @@ class TestCase < Test::Unit::TestCase
   def html(string)
     string.split(/\n/m).map(&:strip).join
   end
+
+  def setup
+    Attrtastic.reset_default_options
+  end
+
   def setup_fixtures
     @user = User.new.tap do |u|
       u.first_name,u.last_name = "John","Doe"

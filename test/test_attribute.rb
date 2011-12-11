@@ -37,6 +37,21 @@ class TestAttribute < TestCase
       assert_equal expected, actual
     end
 
+    context "with default_options" do
+      should "show attribute with default_options[:display_empty] => true" do
+        Attrtastic.default_options[:display_empty] = true
+        expected = html <<-EOHTML
+          <li class="attribute">
+            <span class="label">Title</span>
+            <span class="value"></span>
+          </li>
+        EOHTML
+
+        actual = @user_builder.attribute(:title)
+        assert_equal expected, actual
+      end
+    end
+
     context "with default formating" do
       should "properly format a String" do
         expected = html <<-EOHTML
@@ -72,10 +87,11 @@ class TestAttribute < TestCase
       end
 
       should "properly format a Time" do
+        time = @user.time.strftime("%a, %d %b %Y %H:%M:%S %z")
         expected = html <<-EOHTML
           <li class="attribute">
           <span class="label">Time</span>
-            <span class="value">Sat, 01 Jan 2000 06:00:00 +0100</span>
+            <span class="value">#{time}</span>
           </li>
         EOHTML
         actual = @user_builder.attribute(:time)
@@ -154,7 +170,7 @@ class TestAttribute < TestCase
         expected = html <<-EOHTML
           <li class="attribute">
           <span class="label">Time</span>
-            <span class="value">2000-01-01 06:00:00 +0100</span>
+            <span class="value">#{@user.time}</span>
           </li>
         EOHTML
         actual = @user_builder.attribute(:time, :format => false)

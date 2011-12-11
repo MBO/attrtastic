@@ -277,8 +277,10 @@ module Attrtastic
     #   <%= attr.attribute :label => "User link" do %>
     #     <%= link_to @user.full_name, user_path(@user) %>
     #
+    # Options can be set globally with Attrtastic.default_options
     def attribute(*args, &block)
       options = args.extract_options!
+      options.reverse_merge!(Attrtastic.default_options)
       options[:html] ||= {}
 
       method = args.shift
