@@ -291,46 +291,46 @@ module Attrtastic
 
       label = options.key?(:label) ? options[:label] : label_for_attribute(method)
 
-      unless block_given?
-        value = if options.key?(:value)
-          case options[:value]
-            when Symbol
-              attribute_value = value_of_attribute(method)
-              case attribute_value
-                when Hash
-                  attribute_value[options[:value]]
-                else
-                  attribute_value.send(options[:value])
-              end
-            else
-              options[:value]
-          end
-        else
-          value_of_attribute(method)
-        end
-
-        value = case options[:format]
-          when false
-            value
-          when nil
-            format_attribute_value(value)
-          else
-            template.send(options[:format], value)
-        end
-
-        if value.present? or options[:display_empty]
-          output = template.tag(:li, {:class => html_class}, true)
-          output << template.content_tag(:span, label, :class => html_label_class)
-          output << template.content_tag(:span, value, :class => html_value_class)
-          output.safe_concat("</li>")
-        end
-      else
+      if block_given?
         output = template.tag(:li, {:class => html_class}, true)
         output << template.content_tag(:span, label, :class => html_label_class)
         output << template.tag(:span, {:class => html_value_class}, true)
         output << template.capture(&block)
         output.safe_concat("</span>")
         output.safe_concat("</li>")
+      else
+        value = if options.key?(:value)
+                  case options[:value]
+                  when Symbol
+                    attribute_value = value_of_attribute(method)
+                    case attribute_value
+                    when Hash
+                      attribute_value[options[:value]]
+                    else
+                      attribute_value.send(options[:value])
+                    end
+                  else
+                    options[:value]
+                  end
+                else
+                  value_of_attribute(method)
+                end
+
+        value = case options[:format]
+                when false
+                  value
+                when nil
+                  format_attribute_value(value)
+                else
+                  format_attribute_value(value, options[:format])
+                end
+
+        if value.present? || options[:display_empty]
+          output = template.tag(:li, {:class => html_class}, true)
+          output << template.content_tag(:span, label, :class => html_label_class)
+          output << template.content_tag(:span, value, :class => html_value_class)
+          output.safe_concat("</li>")
+        end
       end
     end
 
@@ -382,16 +382,19 @@ module Attrtastic
       record.send(method)
     end
 
-    def format_attribute_value(value)
-      case value
-        when Date, Time, DateTime
-          template.send(:l, value)
-        when Integer
-          template.send(:number_with_delimiter, value)
-        when Float, BigDecimal
-          template.send(:number_with_precision, value)
-        else
-          value.to_s
+    def format_attribute_value(value, format = nil)
+      format ||= case value
+                 when Date, Time, DateTime
+                   :l
+                 when Integer
+                   :number_with_delimiter
+                 when Float, BigDecimal
+                   :number_with_precision
+                 end
+      if format
+        template.send(format, value)
+      else
+        value.to_s
       end
     end
   end

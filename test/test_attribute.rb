@@ -25,7 +25,7 @@ class TestAttribute < TestCase
       assert_nil actual
     end
 
-    should "show attribute with :display_empty => true" do
+    should "show blank attribute with :display_empty => true" do
       expected = html <<-EOHTML
         <li class="attribute">
           <span class="label">Title</span>
@@ -37,19 +37,29 @@ class TestAttribute < TestCase
       assert_equal expected, actual
     end
 
-    context "with default_options" do
-      should "show attribute with default_options[:display_empty] => true" do
-        Attrtastic.default_options[:display_empty] = true
-        expected = html <<-EOHTML
-          <li class="attribute">
-            <span class="label">Title</span>
-            <span class="value"></span>
-          </li>
-        EOHTML
+    should "show blank attribute with Attrtastic.default_options[:display_empty] = true" do
+      Attrtastic.default_options[:display_empty] = true
+      expected = html <<-EOHTML
+        <li class="attribute">
+          <span class="label">Title</span>
+          <span class="value"></span>
+        </li>
+      EOHTML
 
-        actual = @user_builder.attribute(:title)
-        assert_equal expected, actual
-      end
+      actual = @user_builder.attribute(:title)
+      assert_equal expected, actual
+    end
+
+    should "show custom label" do
+      expected = html <<-EOHTML
+        <li class="attribute">
+          <span class="label">Name</span>
+          <span class="value">Doe, John</span>
+        </li>
+      EOHTML
+
+      actual = @user_builder.attribute(:full_name, :label => "Name")
+      assert_equal expected, actual
     end
 
     context "with default formating" do
@@ -216,83 +226,78 @@ class TestAttribute < TestCase
         expected = html <<-EOHTML
           <li class="attribute">
             <span class="label">Author</span>
-            <span class="value">Hello, my name is Doe, John</span>
+            <span class="value">Doe, John</span>
           </li>
         EOHTML
-        def @template.hello(name)
-          "Hello, my name is #{name}"
+
+        def @template.name_format(object)
+          method_name = %w( full_name name ).find {|m| object.respond_to?(m) }
+
+          object.send(method_name || "to_s")
         end
-        actual = @blog_builder.attribute(:author_full_name, :label => "Author", :format => :hello)
+
+        actual = @blog_builder.attribute(:author, :label => "Author", :format => :name_format)
         assert_equal expected, actual
       end
     end
 
-    should "show custom label" do
-      expected = html <<-EOHTML
-        <li class="attribute">
-          <span class="label">Name</span>
-          <span class="value">Doe, John</span>
-        </li>
-      EOHTML
+    context "with :value option" do
 
-      actual = @user_builder.attribute(:full_name, :label => "Name")
-      assert_equal expected, actual
+      should "show provided value" do
+        expected = html <<-EOHTML
+          <li class="attribute">
+            <span class="label">Full name</span>
+            <span class="value">Sir Doe, John</span>
+          </li>
+        EOHTML
+
+        actual = @user_builder.attribute(:full_name, :value => "Sir #{@user.full_name}")
+        assert_equal expected, actual
+      end
+
+      should "use provided :value option as key for value Hash" do
+        expected = html <<-EOHTML
+          <li class="attribute">
+            <span class="label">Address</span>
+            <span class="value">Hellway 13</span>
+          </li>
+        EOHTML
+
+        actual = @user_builder.attribute(:address, :value => :street)
+        assert_equal expected, actual
+      end
+
+      should "use provided :value option as method nam if value isn't Hash" do
+        expected = html <<-EOHTML
+          <li class="attribute">
+            <span class="label">Blog</span>
+            <span class="value">IT Pro Blog</span>
+          </li>
+        EOHTML
+
+        actual = @user_builder.attribute(:blog, :value => :name)
+        assert_equal expected, actual
+      end
+
+      should "work with custom value blank" do
+        assert_nil @user_builder.attribute(:full_name, :value => nil)
+        assert_nil @user_builder.attribute(:full_name, :value => "")
+
+        expected = html <<-EOHTML
+          <li class="attribute">
+            <span class="label">Full name</span>
+            <span class="value"></span>
+          </li>
+        EOHTML
+
+        actual = @user_builder.attribute(:full_name, :value => nil, :display_empty => true)
+        assert_equal expected, actual
+
+        actual = @user_builder.attribute(:full_name, :value => "", :display_empty => true)
+        assert_equal expected, actual
+      end
+
     end
-
-    should "show custom value" do
-      expected = html <<-EOHTML
-        <li class="attribute">
-          <span class="label">Full name</span>
-          <span class="value">Sir Doe, John</span>
-        </li>
-      EOHTML
-
-      actual = @user_builder.attribute(:full_name, :value => "Sir #{@user.full_name}")
-      assert_equal expected, actual
-    end
-
-    should "use th custome value as hash key if it's a symbol and the attribute is a hash" do
-      expected = html <<-EOHTML
-        <li class="attribute">
-        <span class="label">Address</span>
-          <span class="value">Hellway 13</span>
-        </li>
-      EOHTML
-
-      actual = @user_builder.attribute(:address, :value => :street)
-      assert_equal expected, actual
-    end
-
-    should "use th custome value as a method it's a symbol and the attribute is not a hash" do
-      expected = html <<-EOHTML
-        <li class="attribute">
-        <span class="label">Blog</span>
-          <span class="value">IT Pro Blog</span>
-        </li>
-      EOHTML
-
-      actual = @user_builder.attribute(:blog, :value => :name)
-      assert_equal expected, actual
-    end
-
-    should "work with custom value blank" do
-      assert_nil @user_builder.attribute(:full_name, :value => nil)
-      assert_nil @user_builder.attribute(:full_name, :value => "")
-
-      expected = html <<-EOHTML
-        <li class="attribute">
-          <span class="label">Full name</span>
-          <span class="value"></span>
-        </li>
-      EOHTML
-
-      actual = @user_builder.attribute(:full_name, :value => nil, :display_empty => true)
-      assert_equal expected, actual
-
-      actual = @user_builder.attribute(:full_name, :value => "", :display_empty => true)
-      assert_equal expected, actual
-    end
-
 
     context "with block" do
 
